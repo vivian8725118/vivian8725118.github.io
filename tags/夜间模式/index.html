@@ -18,6 +18,7 @@
     <link rel="alternate" type="application/atom+xml" title="Vivian陈薇" href="/atom.xml">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+
     <title>
         
         Vivian&#39;s blog
@@ -34,6 +35,7 @@
 
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/mob_share.css">
 </head>
 
 <style>
@@ -80,17 +82,17 @@
 					
                     
                         
-                    
-                        
 							
 								
 							
 						
                     
                         
+                    
+                        
 							
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/works/">My Works</a>
                         </li>
 							
 						
@@ -98,7 +100,7 @@
                         
 							
                         <li>
-                            <a href="/works/">My Works</a>
+                            <a href="/tags/">Tags</a>
                         </li>
 							
 						
@@ -567,6 +569,14 @@
 
 <!--wechat title img-->
 <img class="wechat-title-img" src="http://upload.jianshu.io/users/upload_avatars/196894/99323ae8-5924-4730-b73f-9d0d284ff243.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+
 </body>
 
 </html>

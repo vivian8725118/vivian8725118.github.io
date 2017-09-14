@@ -18,6 +18,7 @@
     <link rel="alternate" type="application/atom+xml" title="Vivian陈薇" href="/atom.xml">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+
     <title>
         
         RxJava使用场景｜Vivian&#39;s blog
@@ -34,6 +35,7 @@
 
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/mob_share.css">
 </head>
 
 <style>
@@ -80,17 +82,17 @@
 					
                     
                         
-                    
-                        
 							
 								
 							
 						
                     
                         
+                    
+                        
 							
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/works/">My Works</a>
                         </li>
 							
 						
@@ -98,7 +100,7 @@
                         
 							
                         <li>
-                            <a href="/works/">My Works</a>
+                            <a href="/tags/">Tags</a>
                         </li>
 							
 						
@@ -160,6 +162,7 @@
     }
 
     
+
 </style>
 
 <header class="intro-header">
@@ -256,6 +259,56 @@
                 </ul>
 
                 
+                <!--Mob Share-->
+                
+                     <!--MOB SHARE BEGIN-->
+<div class="post-spread">
+<div class="-hoofoo-share-title">分享文章</div>
+<div class="-hoofoo-share-buttons">
+    <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
+    <div class="-mob-share-weixin -hoofoo-share-weixin -hoofoo-share-ui-button"><i class="fa fa-weixin" aria-hidden="true"></i></div>
+    <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+        <li class="-mob-share-mingdao"><p>明道</p></li>
+        <li class="-mob-share-pengyou"><p>朋友网</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+        <li class="-mob-share-pocket"><p>Pocket</p></li>
+        <li class="-mob-share-google"><p>Google+</p></li>
+        <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+        <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+        <li class="-mob-share-linkedin"><p>Linkedin</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+</div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=20fbe7759e8cf"></script>
+<!--MOB SHARE END-->
+                     
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+
+                
+                
+
+                
 
                 
 
@@ -289,6 +342,7 @@
                 </div>
             </div>
         </div>
+
 
         <div class="row">
             <!-- Sidebar Container -->
@@ -344,6 +398,7 @@
 
     </div>
 </article>
+
 
 
 
@@ -507,6 +562,14 @@
 
 <!--wechat title img-->
 <img class="wechat-title-img" src="http://upload.jianshu.io/users/upload_avatars/196894/99323ae8-5924-4730-b73f-9d0d284ff243.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+
 </body>
 
 </html>
