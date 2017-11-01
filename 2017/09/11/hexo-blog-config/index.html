@@ -82,25 +82,25 @@
 					
                     
                         
-							
-								
-							
-						
-                    
-                        
                     
                         
 							
                         <li>
-                            <a href="/works/">My Works</a>
+                            <a href="/tags/">Tags</a>
                         </li>
 							
 						
                     
                         
 							
+								
+							
+						
+                    
+                        
+							
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/works/">My Works</a>
                         </li>
 							
 						
@@ -227,22 +227,30 @@
 <ul>
 <li>最后可以运行<code>hexo s</code>命令查看是否搭建成功</li>
 </ul>
-<h3 id="2-下载主题"><a href="#2-下载主题" class="headerlink" title="2.下载主题"></a>2.下载主题</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone https://github.com/Haojen/hexo-theme-Anisina.git themes/Anisina</div></pre></td></tr></table></figure>
-<h3 id="3-配置博客"><a href="#3-配置博客" class="headerlink" title="3.配置博客"></a>3.配置博客</h3><h4 id="1-配置博客封面图"><a href="#1-配置博客封面图" class="headerlink" title="1.配置博客封面图"></a>1.配置博客封面图</h4><p>在md的header信息中配置如下:</p>
+<h3 id="2-下载主题"><a href="#2-下载主题" class="headerlink" title="2.下载主题"></a>2.下载主题</h3><p>在 themes 文件夹内，新增一个Anisina文件夹，并修改 _config.yml 内的 theme 设定<code>theme: Anisina</code>，即可切换到<code>Anisina</code>主题。然后把<code>Anisina</code>主题的内容clone到刚刚新建的Anisina文件夹下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone https://github.com/Haojen/hexo-theme-Anisina.git themes/Anisina</div></pre></td></tr></table></figure>
+<h3 id="3-配置博客"><a href="#3-配置博客" class="headerlink" title="3.配置博客"></a>3.配置博客</h3><h4 id="1-配置博客封面图"><a href="#1-配置博客封面图" class="headerlink" title="1.配置博客封面图"></a>1.配置博客封面图</h4><p>在需要单独设置封面图的文章所对应的md文件里，添加配置header信息如下:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">header-img: http://upload-images.jianshu.io/upload_images/196894-95c037286850b891.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</div><div class="line">cdn: &apos;header-off&apos;</div></pre></td></tr></table></figure>
 <h4 id="2-用户信息配置"><a href="#2-用户信息配置" class="headerlink" title="2.用户信息配置"></a>2.用户信息配置</h4><p><em>注意：在主题的_config.yml中配置一下信息，而非博客根目录下的_config.yml中配置。ps:不过我的有些没起作用的就放到了根目录下的_config.yml中。</em></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">user_name: your name</div><div class="line">user_avatar: your avatar</div><div class="line">user_location: your location</div><div class="line">user_description: about you introduction</div><div class="line"></div><div class="line">// this info will show About page</div><div class="line">user_contact: </div><div class="line">user_introduction:</div><div class="line"></div><div class="line">// config you share info</div><div class="line">weibo_username: </div><div class="line">zhihu_username: </div><div class="line">github_username:</div><div class="line">twitter_username: </div><div class="line">facebook_username:  </div><div class="line">linkedin_username:</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">user_name: your name</div><div class="line">user_avatar: your avatar</div><div class="line">user_location: your location</div><div class="line">user_description: about you introduction</div><div class="line"></div><div class="line">// this info will show About page</div><div class="line">user_contact: </div><div class="line">user_introduction:</div><div class="line"></div><div class="line">// config you share info</div><div class="line">//以下的username请都改为自己的</div><div class="line">weibo_username: vivian8725118</div><div class="line">zhihu_username: vivian8725118</div><div class="line">github_username: vivian8725118</div><div class="line">twitter_username: vivian8725118</div><div class="line">facebook_username:  </div><div class="line">linkedin_username:</div></pre></td></tr></table></figure>
 <h4 id="3-创建About页面"><a href="#3-创建About页面" class="headerlink" title="3.创建About页面"></a>3.创建About页面</h4><p>在根目录下的<code>source</code>文件夹里创建一个<code>about</code>文件夹，然后在<code>about</code>文件夹里新建<code>index.md</code>文件,在文件中添加如下代码，并保存：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">title: about</div><div class="line">date: 2017-09-11 23:12:50</div><div class="line">layout: about</div></pre></td></tr></table></figure>
-<p>需要提一下的是，作者还没有支持对About页面内容的修改，所以本博客搭建的时候，直接在<code>themes/Anisina/layout/about.ejs</code>中修改的内容。</p>
+<p>需要提一下的是，作者还没有支持对About页面内容的修改，所以本博客搭建的时候，直接在<code>themes/Anisina/layout/about.ejs</code>中修改的内容。about.ejs里边是html的格式，可以参照里边默认的html代码，修改为自己的内容。例如下面是修改为自己的博客地址：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;li&gt;简书《程序员》专题主编：&lt;a target=&quot;_blank&quot; href=&quot;http://www.jianshu.com/u/4a4eb4feee62&quot;&gt; 小彤花园 &lt;span class=&quot;glyphicon glyphicon-link&quot;&gt;&lt;/span&gt; &lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;li&gt;掘金联合编辑：&lt;a target=&quot;_blank&quot; href=&quot;https://juejin.im/user/5645935a00b0814da4eacf92&quot;&gt; 小彤花园 &lt;span class=&quot;glyphicon glyphicon-link&quot;&gt;&lt;/span&gt; &lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;li&gt;GitHub: &lt;a target=&quot;_blank&quot; href=&quot;https://www.github.com/vivian8725118&quot;&gt; vivian8725118 &lt;span class=&quot;glyphicon glyphicon-link&quot;&gt;&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;li&gt;CSDN: &lt;a target=&quot;_blank&quot; href=&quot;http://blog.csdn.net/vivian8725118&quot;&gt; vivian陈薇 &lt;span class=&quot;glyphicon glyphicon-link&quot;&gt;&lt;/a&gt;&lt;/li&gt;</div></pre></td></tr></table></figure>
 <h4 id="4-创建Works页面"><a href="#4-创建Works页面" class="headerlink" title="4.创建Works页面"></a>4.创建Works页面</h4><p>在根目录下的source文件夹中创建works文件夹，如上新建一个<code>index.md</code>，添加如下内容到文件中，并保存：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">title: My Works</div><div class="line">date: 2017-09-11 23:16:50</div><div class="line">layout: works</div></pre></td></tr></table></figure>
 <p>然后在<code>source</code>文件夹下创建一个<code>_data</code>文件夹，打开文件夹，新建<code>project.json</code>文件，文件格式如下:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;Apple 官网临摹&quot;: &#123;</div><div class="line">    &quot;title&quot;: &quot;Apple 官网临摹&quot;,</div><div class="line">    &quot;subTitle&quot;: &quot;根据美版apple官网临摹&quot;,</div><div class="line">    &quot;img_link&quot;: &quot;http://o7bkkhiex.bkt.clouddn.com/item-apple.jpg&quot;,</div><div class="line">    &quot;use&quot; : [&quot;jQuery&quot;],</div><div class="line">    &quot;link&quot;: &quot;http://haojen.github.io/apple-linmo/&quot;,</div><div class="line">    &quot;data&quot;:&quot;2016.3&quot;,</div><div class="line">    &quot;direction&quot;: &quot;临摹 2016 年三月份 Apple 美版单页面。&quot;</div><div class="line">  &#125;,</div><div class="line">   &quot;Anisina (阿尼丝娜)&quot;: &#123;</div><div class="line">    &quot;title&quot;: &quot;Anisina&quot;,</div><div class="line">    &quot;subTitle&quot;: &quot;基于 Hexo 制作的个人博客主题&quot;,</div><div class="line">    &quot;img_link&quot;: &quot;http://o7bkkhiex.bkt.clouddn.com/Anisina.png&quot;,</div><div class="line">    &quot;use&quot; : [&quot;jQuery&quot;,&quot;Bootstrap&quot;,&quot;Node.js&quot;,&quot;EJS&quot;,&quot;Hexo&quot;,&quot;SASS&quot;],</div><div class="line">    &quot;link&quot;: &quot;http://haojen.github.io/&quot;,</div><div class="line">    &quot;data&quot;: &quot;2016.5&quot;,</div><div class="line">    &quot;direction&quot;:</div><div class="line">        &quot;Hexo 是某位台湾友人基于 Node.js 编写的博客框架&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="5-添加评论系统"><a href="#5-添加评论系统" class="headerlink" title="5.添加评论系统"></a>5.添加评论系统</h4><p>主题中支持来比力的配置，所以在<code>_config.yml</code>配置文件中添加两行配置代码即可。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">use_livere: true</div><div class="line">livere_uid: 你的来比力的注册uid</div></pre></td></tr></table></figure>
+<p>那么，如何找到<code>livere_uid</code>呢？<br>首先，在<a href="https://livere.com/" target="_blank" rel="external">来必力</a>的网站上注册一下，然后登陆，找到”<a href="https://livere.com/insight/communite" target="_blank" rel="external">管理页面</a>“，左边菜单中找到“代码管理”，会看到如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;!-- 来必力City版安装代码 --&gt;</div><div class="line">&lt;div id=&quot;lv-container&quot; data-id=&quot;city&quot; data-uid=&quot;MTAyMC8zMDgxMi83MzY0&quot;&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">   (function(d, s) &#123;</div><div class="line">       var j, e = d.getElementsByTagName(s)[0];</div><div class="line"></div><div class="line">       if (typeof LivereTower === &apos;function&apos;) &#123; return; &#125;</div><div class="line"></div><div class="line">       j = d.createElement(s);</div><div class="line">       j.src = &apos;https://cdn-city.livere.com/js/embed.dist.js&apos;;</div><div class="line">       j.async = true;</div><div class="line"></div><div class="line">       e.parentNode.insertBefore(j, e);</div><div class="line">   &#125;)(document, &apos;script&apos;);</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;noscript&gt;为正常使用来必力评论功能请激活JavaScript&lt;/noscript&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;!-- City版安装代码已完成 --&gt;</div></pre></td></tr></table></figure>
+<p>代码中的<code>data-uid</code>就是我们所需要的<code>livere_uid</code>。</p>
 <h4 id="6-添加百度统计"><a href="#6-添加百度统计" class="headerlink" title="6.添加百度统计"></a>6.添加百度统计</h4><p>主题中添加了百度统计的js代码，在配置文件中直接添加<code>track_id</code>即可:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ba_track_id: your track id</div></pre></td></tr></table></figure>
+<p>如何找到ba_track_id？<br>同理，在<a href="https://tongji.baidu.com" target="_blank" rel="external">百度统计</a>网站注册登陆，在【管理】菜单中找到【代码管理】-&gt;【代码获取】，可以看到一段js代码。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">var _hmt = _hmt || [];</div><div class="line">(function() &#123;</div><div class="line">  var hm = document.createElement(&quot;script&quot;);</div><div class="line">  hm.src = &quot;https://hm.baidu.com/hm.js?d6237b3ef7ace3d92cfaf9169538b06d&quot;;</div><div class="line">  var s = document.getElementsByTagName(&quot;script&quot;)[0]; </div><div class="line">  s.parentNode.insertBefore(hm, s);</div><div class="line">&#125;)();</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><code>hm.src = &quot;https://hm.baidu.com/hm.js?d6237b3ef7ace3d92cfaf9169538b06d&quot;;</code>这句代码中?后边的这一串就是我们所需要的<code>ba_track_id</code>。</p>
 <h4 id="7-部署Hexo博客"><a href="#7-部署Hexo博客" class="headerlink" title="7.部署Hexo博客"></a>7.部署Hexo博客</h4><ul>
 <li>建站</li>
 </ul>
