@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://vivianchen.cn/2016/03/09/vector-asset-studio/</loc>
+    
+    <lastmod>2019-01-20T08:08:30.361Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://vivianchen.cn/2016/01/10/android-studio-plugin/</loc>
+    
+    <lastmod>2019-01-20T08:08:18.148Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://vivianchen.cn/2016/01/13/webview/</loc>
+    
+    <lastmod>2019-01-20T08:07:56.913Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://vivianchen.cn/2017/08/03/rxjava-using-scene/</loc>
+    
+    <lastmod>2019-01-20T08:07:11.989Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://vivianchen.cn/2019/01/20/activity-start-process/</loc>
     
     <lastmod>2019-01-20T08:05:19.948Z</lastmod>
@@ -79,37 +107,9 @@
   </url>
   
   <url>
-    <loc>http://vivianchen.cn/2016/01/13/webview/</loc>
-    
-    <lastmod>2017-09-11T06:40:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://vivianchen.cn/2016/03/09/vector-asset-studio/</loc>
-    
-    <lastmod>2017-09-11T06:39:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://vivianchen.cn/2016/04/28/mac-app/</loc>
     
     <lastmod>2017-09-11T06:36:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://vivianchen.cn/2016/01/10/android-studio-plugin/</loc>
-    
-    <lastmod>2017-09-11T06:30:45.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://vivianchen.cn/2017/08/03/rxjava-using-scene/</loc>
-    
-    <lastmod>2017-09-11T06:29:22.000Z</lastmod>
     
   </url>
   
