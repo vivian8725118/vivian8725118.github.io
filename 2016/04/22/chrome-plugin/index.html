@@ -88,19 +88,19 @@
 						
                     
                         
-                    
-                        
 							
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/works/">My Works</a>
                         </li>
 							
 						
                     
                         
+                    
+                        
 							
                         <li>
-                            <a href="/works/">My Works</a>
+                            <a href="/tags/">Tags</a>
                         </li>
 							
 						
@@ -165,6 +165,8 @@
 
 </style>
 
+
+
 <header class="intro-header">
     <div class="container">
         <div class="row">
@@ -226,6 +228,47 @@
 ![1461310999602.png](http://upload-images.jianshu.io/upload_images/196894-7a21f7232ec22a8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)"></p>
 <p>Pluto TV 是一个可以看在线直播的 Chrome 插件，可以看一些 Jimmy Fallon，Conan O’Brien 等国外的娱乐节目，还有一些 NASA 和 SciFi等科学节目，如果看不了直播还可以先马上，之后再看，喜欢看 youtube 的程序猿有福了</p>
 <p><b>推荐理由：</b>可以看国外的一些不错的节目</p>
+
+
+                <!--pay-->
+                <p class="btn_shang">
+                <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">¥打赏5毛</a>
+                </p>
+                
+                <div class="hide_box" style="display: none;"></div>
+                <div class="shang_box" style="display: none;">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">
+                    <img src="/assets/images/close.png" alt="取消" align="center"></a>
+                    <div class="shang_tit" align="center">
+                        <p>谢谢支持，我会继续努力的</p>
+                    </div>
+                    
+                    <div align="center">
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/wechat-pay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/alipay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    </div>
+                  
+                  
+                  
+                </div>
+
+                <script type="text/javascript">
+                    $(".pay_item").click(function() {
+                        $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                        var dataid = $(this).attr('data-id');
+                        $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "-code.jpeg");
+                        $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+                    });
+
+                    function dashangToggle() {
+                        $(".hide_box").fadeToggle();
+                        $(".shang_box").fadeToggle();
+                    };
+                </script>
 
                 <hr>
                 

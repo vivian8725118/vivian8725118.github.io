@@ -88,19 +88,19 @@
 						
                     
                         
-                    
-                        
 							
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/works/">My Works</a>
                         </li>
 							
 						
                     
                         
+                    
+                        
 							
                         <li>
-                            <a href="/works/">My Works</a>
+                            <a href="/tags/">Tags</a>
                         </li>
 							
 						
@@ -164,6 +164,8 @@
     
 
 </style>
+
+
 
 <header class="intro-header">
     <div class="container">
@@ -251,6 +253,47 @@ Relevant 相关的
 
 Time-bound 有时限的
 </code></pre><p>个人感觉，这本书还是又很帮助的，值得去看下。但是有一点，这种xxx方法论，都是辅助自己解决问题的东西，不要太迷恋，感觉掌握了xxx方法论，我就能xxx。这其中还有很多是要自己去实践，去遇见问题，解决问题的，方法论只是可能减少遇到问题时候的阻塞时间。</p>
+
+
+                <!--pay-->
+                <p class="btn_shang">
+                <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">¥打赏5毛</a>
+                </p>
+                
+                <div class="hide_box" style="display: none;"></div>
+                <div class="shang_box" style="display: none;">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">
+                    <img src="/assets/images/close.png" alt="取消" align="center"></a>
+                    <div class="shang_tit" align="center">
+                        <p>谢谢支持，我会继续努力的</p>
+                    </div>
+                    
+                    <div align="center">
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/wechat-pay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/alipay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    </div>
+                  
+                  
+                  
+                </div>
+
+                <script type="text/javascript">
+                    $(".pay_item").click(function() {
+                        $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                        var dataid = $(this).attr('data-id');
+                        $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "-code.jpeg");
+                        $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+                    });
+
+                    function dashangToggle() {
+                        $(".hide_box").fadeToggle();
+                        $(".shang_box").fadeToggle();
+                    };
+                </script>
 
                 <hr>
                 

@@ -88,19 +88,19 @@
 						
                     
                         
-                    
-                        
 							
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/works/">My Works</a>
                         </li>
 							
 						
                     
                         
+                    
+                        
 							
                         <li>
-                            <a href="/works/">My Works</a>
+                            <a href="/tags/">Tags</a>
                         </li>
 							
 						
@@ -165,6 +165,8 @@
 
 </style>
 
+
+
 <header class="intro-header">
     <div class="container">
         <div class="row">
@@ -201,28 +203,46 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>Activity启动流程很多文章都已经说过了，这里说一下自己的理解。</p>
-<h2 id="涉及到的概念"><a href="#涉及到的概念" class="headerlink" title="涉及到的概念"></a>涉及到的概念</h2><ul>
-<li>进程：Android系统中每个APP都是一个进程</li>
-<li>IPC：跨进程通信</li>
+                <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Activity启动流程很多文章都已经说过了，这里说一下自己的理解。<br>Activity启动流程分两种:</p>
+<ul>
+<li>一种是启动正在运行的app的Activity，即启动子Activity。如无特殊声明默认和启动该activity的activity处于同一进程。如果有声明在一个新的进程中，则处于两个进程。</li>
+<li>一种是打开新的app，即为Launcher启动新的Activity。</li>
+</ul>
+<p>后边启动Activity的流程是一样的，区别是前边判断进程是否存在的那部分。</p>
+<p>Activity启动的前提是已经开机，各项进程和AMS等服务已经初始化完成，在这里也提一下那些内容。</p>
+<h1 id="Activity启动之前的一些事情"><a href="#Activity启动之前的一些事情" class="headerlink" title="Activity启动之前的一些事情"></a>Activity启动之前的一些事情</h1><ul>
+<li>init进程：init是所有linux程序的起点，是Zygote的父进程。解析init.rc孵化出Zygote进程。</li>
+<li>Zygote进程：Zygote是所有Java进程的父进程，所有的App进程都是由Zygote进程fork生成的。</li>
+<li>SystemServer进程：System Server是Zygote孵化的第一个进程。SystemServer负责启动和管理整个Java framework，包含AMS，PMS等服务。</li>
+<li>Launcher：Zygote进程孵化的第一个App进程是Launcher。Launcher也就是</li>
+</ul>
+<h2 id="1-init进程是什么？"><a href="#1-init进程是什么？" class="headerlink" title="1.init进程是什么？"></a>1.init进程是什么？</h2><p>Android是基于linux系统的，手机开机之后，linux内核进行加载。加载完成之后会启动init进程。<br>init进程会启动ServiceManager，孵化一些守护进程，并解析init.rc孵化Zygote进程。</p>
+<h2 id="2-Zygote进程是什么？"><a href="#2-Zygote进程是什么？" class="headerlink" title="2.Zygote进程是什么？"></a>2.Zygote进程是什么？</h2><p>所有的App进程都是由Zygote进程fork生成的，包括SystemServer进程。Zygote初始化后，会注册一个等待接受消息的socket，OS层会采用socket进行IPC通信。</p>
+<h2 id="3-为什么是Zygote来孵化进程，而不是新建进程呢？"><a href="#3-为什么是Zygote来孵化进程，而不是新建进程呢？" class="headerlink" title="3.为什么是Zygote来孵化进程，而不是新建进程呢？"></a>3.为什么是Zygote来孵化进程，而不是新建进程呢？</h2><p>每个应用程序都是运行在各自的Dalvik虚拟机中，应用程序每次运行都要重新初始化和启动虚拟机，这个过程会耗费很长时间。Zygote会把已经运行的虚拟机的代码和内存信息共享，起到一个<strong>预加载资源和类</strong>的作用，从而缩短启动时间。</p>
+<h1 id="Activity启动阶段"><a href="#Activity启动阶段" class="headerlink" title="Activity启动阶段"></a>Activity启动阶段</h1><h2 id="涉及到的概念"><a href="#涉及到的概念" class="headerlink" title="涉及到的概念"></a>涉及到的概念</h2><ul>
+<li>进程：Android系统为每个APP分配至少一个进程</li>
+<li>IPC：跨进程通信，Android中采用Binder机制。</li>
 </ul>
 <h2 id="涉及到的类"><a href="#涉及到的类" class="headerlink" title="涉及到的类"></a>涉及到的类</h2><ul>
 <li>ActivityStack：Activity在AMS的栈管理，用来记录已经启动的Activity的先后关系，状态信息等。通过ActivityStack决定是否需要启动新的进程。</li>
-<li>ActivitySupervisor：管理activity任务栈</li>
-<li>ActivityThread：UI线程，App的真正入口。</li>
+<li>ActivitySupervisor：管理 activity 任务栈</li>
+<li>ActivityThread：ActivityThread 运行在UI线程（主线程），App的真正入口。</li>
 <li>ApplicationThread：用来实现AMS和ActivityThread之间的交互。</li>
-<li>ApplicationThreadProxy：ApplicationThread在服务端的代理。AMS就是通过该代理与ActivityThread进行通信的。</li>
-<li>AMS：负责管理四大组件和进程，包括生命周期和状态切换。AMS因为要和ui交互，所以极其复杂，涉及window。</li>
+<li>ApplicationThreadProxy：ApplicationThread 在服务端的代理。AMS就是通过该代理与ActivityThread进行通信的。</li>
+<li>IActivityManager：继承与IInterface接口，抽象出跨进程通信需要实现的功能</li>
 <li>AMN：运行在server端（SystemServer进程）。实现了Binder类，具体功能由子类AMS实现。</li>
+<li>AMS：AMN的子类，负责管理四大组件和进程，包括生命周期和状态切换。AMS因为要和ui交互，所以极其复杂，涉及window。</li>
 <li>AMP：AMS的client端代理（app进程）。了解Binder知识可以比较容易理解server端的stub和client端的proxy。AMP和AMS通过Binder通信。</li>
-<li>Instrumentation：仪表盘，负责调用Activity和Application生命周期。</li>
+<li>Instrumentation：仪表盘，负责调用Activity和Application生命周期。测试用到这个类比较多。</li>
 </ul>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="https://upload-images.jianshu.io/upload_images/196894-85c44f1bf563d8d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p>这个图来源自网上，之前也看过很多类似讲流程的文章，但是大都是片段的。这个图是目前看到的最全的，自己去画一下也应该不会比这个全了，所以在这里直接引用一下，可以去浏览器上放大看。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/196894-85c44f1bf563d8d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h2 id="涉及到的进程"><a href="#涉及到的进程" class="headerlink" title="涉及到的进程"></a>涉及到的进程</h2><ul>
 <li>Launcher所在的进程</li>
 <li>AMS所在的SystemServer进程</li>
 <li>要启动的Activity所在的app进程</li>
 </ul>
+<p>如果是启动根Activity，就涉及上述三个进程。<br>如果是启动子Activity，那么就只涉及AMS进程和app所在进程。</p>
 <h2 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h2><ul>
 <li>Launcher：Launcher通知AMS要启动activity。<ul>
 <li>startActivitySafely-&gt;startActivity-&gt;Instrumentation.execStartActivity()(AMP.startActivity)-&gt;AMS.startActivity</li>
@@ -242,63 +262,116 @@
 <li>继续通过ApplicationThread来发送消息给主线程的Handler来启动Activity（handleLaunchActivity）。</li>
 <li>handleLauchActivity：调用了performLauchActivity，里边Instrumentation生成了新的activity对象，继续调用activity生命周期。</li>
 </ul>
-<h2 id="参考函数流程"><a href="#参考函数流程" class="headerlink" title="参考函数流程"></a>参考函数流程</h2><p>Activity启动流程（从Launcher开始）：<br>Step1~Step5： Step1-Step5通知ActivityManagerService要启动新的Activity了（在Launcher所在进程执行）。</p>
+<h2 id="IPC过程："><a href="#IPC过程：" class="headerlink" title="IPC过程："></a>IPC过程：</h2><p>双方都是通过对方的代理对象来进行通信。<br>1.app和AMS通信：app通过本进程的AMP和AMS进行Binder通信<br>2.AMS和新app通信：通过ApplicationThreadProxy来通信，并不直接和ActivityThread通信</p>
+<h2 id="参考函数流程"><a href="#参考函数流程" class="headerlink" title="参考函数流程"></a>参考函数流程</h2><p>Activity启动流程（从Launcher开始）：</p>
+<p>第一阶段： Launcher通知AMS要启动新的Activity（在Launcher所在的进程执行）</p>
 <ul>
-<li>Step1： Launcher.startActivitySafely</li>
-<li>Step2：Activity.startActivity</li>
-<li>Step3：Activity.startActivityForResult</li>
-<li>Step4：Instrumentation.execStartActivity</li>
-<li>Step5：ActivityManagerProxy.startActivity</li>
+<li><strong>Launcher.startActivitySafely</strong> //首先Launcher发起启动Activity的请求</li>
+<li>Activity.startActivity</li>
+<li>Activity.startActivityForResult</li>
+<li><strong>Instrumentation.execStartActivity</strong> //交由Instrumentation代为发起请求</li>
+<li>ActivityManager.getService().startActivity //通过IActivityManagerSingleton.get()得到一个AMP代理对象</li>
+<li>ActivityManagerProxy.startActivity //通过AMP代理通知AMS启动activity   </li>
 </ul>
-<p>Step6~Step12： Step6-Step12通知Launcher程序应该pause Launcher的Activity了（在ActivityManagerService所在进程执行）</p>
+<p>第二阶段：AMS先校验一下Activity的正确性，如果正确的话，会暂存一下Activity的信息。然后，AMS会通知Launcher程序pause Activity（在AMS所在进程执行）</p>
 <ul>
-<li>step6：ActivityManagerService.startActivity</li>
-<li>step7：ActivityStack.startActivityMayWait</li>
-<li>step8：ActivityStack.startActivityLocked ：检查有没有在AndroidManifest中注册</li>
-<li>step9：ActivityStack.startActivityUncheckedLocked， ActivityStack.startActivityLocked ：startActivityUncheckedLocked判断是否需要创建一个新的任务来启动Activity。</li>
-<li>step10：ActivityStack.resumeTopActivityLocked ：获取栈顶的activity，并通知Launcher应该pause掉这个Activity以便启动新的activity</li>
-<li>step11：ActivityStack.startPausingLocked</li>
-<li>Step 12. ApplicationThreadProxy.schedulePauseActivity</li>
+<li><strong>ActivityManagerService.startActivity</strong></li>
+<li>ActivityManagerService.startActivityAsUser</li>
+<li>ActivityStackSupervisor.startActivityMayWait</li>
+<li>ActivityStackSupervisor.startActivityLocked ：检查有没有在AndroidManifest中注册</li>
+<li>ActivityStackSupervisor.startActivityUncheckedLocked</li>
+<li><strong>ActivityStack.startActivityLocked</strong> ：判断是否需要创建一个新的任务来启动Activity。</li>
+<li><strong>ActivityStack.resumeTopActivityLocked</strong> ：获取栈顶的activity，并通知Launcher应该pause掉这个Activity以便启动新的activity。</li>
+<li>ActivityStack.startPausingLocked</li>
+<li>ApplicationThreadProxy.schedulePauseActivity</li>
 </ul>
-<p>Step13~Step17： pause Launcher的Activity，并通知ActivityManagerService已经pause结束了（在Launcher所在进程执行）</p>
+<p>第三阶段： pause Launcher的Activity，并通知AMS已经paused（在Launcher所在进程执行）</p>
 <ul>
-<li>step13：ApplicationThread.schedulePauseActivity</li>
-<li>step14：ActivityThread.queueOrSendMessage</li>
-<li>step15：H.handleMessage</li>
-<li>step16：ActivityThread.handlePauseActivity</li>
-<li>step17：ActivityManagerProxy.activityPaused</li>
+<li>ApplicationThread.schedulePauseActivity</li>
+<li>ActivityThread.queueOrSendMessage</li>
+<li>H.handleMessage</li>
+<li>ActivityThread.handlePauseActivity</li>
+<li>ActivityManagerProxy.activityPaused</li>
 </ul>
-<p>Step18~Step23 创建一个新进程，调用ActivityThread.main方法（执行在ActivityManagerService进程）</p>
+<p>第四阶段：检查activity所在进程是否存在，如果存在，就直接通知这个进程，在该进程中启动Activity；不存在的话，会调用Process.start创建一个新进程（执行在AMS进程）</p>
 <ul>
-<li>step18：ActivityManagerService.activityPaused</li>
-<li>step19：ActivityStack.activityPaused</li>
-<li>step20：ActivityStack.completePauseLocked</li>
-<li>step21：ActivityStack.resumeTopActivityLocked</li>
-<li>step22；ActivityStack.startSpecificActivityLocked</li>
-<li>step23：ActivityManagerService.startProcessLocked</li>
+<li>ActivityManagerService.activityPaused </li>
+<li>ActivityStack.activityPaused</li>
+<li>ActivityStack.completePauseLocked</li>
+<li>ActivityStack.resumeTopActivityLocked</li>
+<li>ActivityStack.startSpecificActivityLocked</li>
+<li><strong>ActivityManagerService.startProcessLocked</strong>  </li>
+<li><strong>Process.start</strong> //在这里创建了新进程，新的进程会导入ActivityThread类，并执行它的main函数</li>
 </ul>
-<p>step18-step23：创建一个新进程，调用ActivityThread.main方法（执行在ActivityManagerService进程）。这其中，ActivityManagerService会先检查目标Activity所需的应用进程是否存在，如果存在，就直接通知这个进程，在该进程中启动Activity，否则，会先调用Process.start创建一个新的应用程序进程。<br>注：这里就是与在同一个进程中启动Activity的区别之处</p>
-<p>Step24~Step25： 创建ActivityThread实例，初始化一些数据，进入Loop循环（执行在新创建的进程）</p>
+<p>第五阶段： 创建ActivityThread实例，执行一些初始化操作，并绑定Application。如果Application不存在，会调用LoadedApk.makeApplication创建一个新的Application对象。之后进入Loop循环。（执行在新创建的app进程）</p>
 <ul>
-<li>step24：ActivityThread.main</li>
-<li>step25：ActivityManagerProxy.attachApplication</li>
+<li><strong>ActivityThread.main</strong> </li>
+<li>ActivityThread.attach(false) //声明不是系统进程</li>
+<li>ActivityManagerProxy.attachApplication </li>
 </ul>
-<p>Step26~Step29： 处理新的应用进程发出的创建进程完成的通信请求，并通知新应用程序进程启动目标Activity组件（执行在ActivityManagerService进程）</p>
+<p>第六阶段：处理新的应用进程发出的创建进程完成的通信请求，并通知新应用程序进程启动目标Activity组件（执行在AMS进程）</p>
 <ul>
-<li>step26：ActivityManagerService.attachApplication<br>step27：ActivityManagerService.attachApplicationLocked</li>
-<li>step28：ActivityStack.realStartActivityLocked</li>
-<li>step29：ApplicationThreadProxy.scheduleLaunchActivity</li>
+<li><strong>ActivityManagerService.attachApplication</strong> //AMS绑定本地ApplicationThread对象，后续通过ApplicationThreadProxy来通信。</li>
+<li>ActivityManagerService.attachApplicationLocked</li>
+<li><strong>ActivityStack.realStartActivityLocked</strong> //真正要启动Activity了！</li>
+<li>ApplicationThreadProxy.scheduleLaunchActivity //AMS通过ATP通知app进程启动Activity</li>
 </ul>
-<p>Step30~Step35： 加载MainActivity类，调用onCreate声明周期方法（执行在新进程）</p>
+<p>第七阶段： 加载MainActivity类，调用onCreate声明周期方法（执行在新启动的app进程）</p>
 <ul>
-<li>step30：ApplicationThread.scheduleLaunchActivity</li>
-<li>step31：ActivityThread.queueOrSendMessage</li>
-<li>step32：H.handleMessage</li>
-<li>step33：ActivityThread.handleLaunchActivity</li>
-<li>step34：ActivityThread.performLaunchActivity</li>
-<li>step35：MainActivity.onCreate</li>
+<li>ApplicationThread.scheduleLaunchActivity //ApplicationThread发消息给AT</li>
+<li>ActivityThread.queueOrSendMessage</li>
+<li>H.handleMessage //AT的Handler来处理接收到的LAUNCH_ACTIVITY的消息</li>
+<li><strong>ActivityThread.handleLaunchActivity</strong></li>
+<li>ActivityThread.performLaunchActivity</li>
+<li><strong>Instrumentation.newActivity</strong> //调用Instrumentation类来新建一个Activity对象</li>
+<li><strong>Instrumentation.callActivityOnCreate</strong></li>
+<li>MainActivity.onCreate</li>
+<li>ActivityThread.handleResumeActivity</li>
+<li>AMP.activityResumed</li>
+<li>AMS.activityResumed(AMS进程)</li>
 </ul>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="http://gityuan.com/2016/03/12/start-activity/" target="_blank" rel="external">http://gityuan.com/2016/03/12/start-activity/</a><br><a href="https://blog.csdn.net/luoshengyang/article/details/6689748" target="_blank" rel="external">https://blog.csdn.net/luoshengyang/article/details/6689748</a></p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="http://gityuan.com/2016/03/12/start-activity/" target="_blank" rel="external">http://gityuan.com/2016/03/12/start-activity/</a><br><a href="https://blog.csdn.net/luoshengyang/article/details/6689748" target="_blank" rel="external">https://blog.csdn.net/luoshengyang/article/details/6689748</a></p>
+
+
+                <!--pay-->
+                <p class="btn_shang">
+                <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">¥打赏5毛</a>
+                </p>
+                
+                <div class="hide_box" style="display: none;"></div>
+                <div class="shang_box" style="display: none;">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">
+                    <img src="/assets/images/close.png" alt="取消" align="center"></a>
+                    <div class="shang_tit" align="center">
+                        <p>谢谢支持，我会继续努力的</p>
+                    </div>
+                    
+                    <div align="center">
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/wechat-pay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/alipay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    </div>
+                  
+                  
+                  
+                </div>
+
+                <script type="text/javascript">
+                    $(".pay_item").click(function() {
+                        $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                        var dataid = $(this).attr('data-id');
+                        $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "-code.jpeg");
+                        $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+                    });
+
+                    function dashangToggle() {
+                        $(".hide_box").fadeToggle();
+                        $(".shang_box").fadeToggle();
+                    };
+                </script>
 
                 <hr>
                 
@@ -393,7 +466,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#涉及到的概念"><span class="toc-text">涉及到的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#涉及到的类"><span class="toc-text">涉及到的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程图"><span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#涉及到的进程"><span class="toc-text">涉及到的进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体流程"><span class="toc-text">具体流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考函数流程"><span class="toc-text">参考函数流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-text">参考文章</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#引言"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity启动之前的一些事情"><span class="toc-text">Activity启动之前的一些事情</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-init进程是什么？"><span class="toc-text">1.init进程是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Zygote进程是什么？"><span class="toc-text">2.Zygote进程是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-为什么是Zygote来孵化进程，而不是新建进程呢？"><span class="toc-text">3.为什么是Zygote来孵化进程，而不是新建进程呢？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity启动阶段"><span class="toc-text">Activity启动阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#涉及到的概念"><span class="toc-text">涉及到的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#涉及到的类"><span class="toc-text">涉及到的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程图"><span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#涉及到的进程"><span class="toc-text">涉及到的进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体流程"><span class="toc-text">具体流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPC过程："><span class="toc-text">IPC过程：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考函数流程"><span class="toc-text">参考函数流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-text">参考文章</span></a></li></ol>
                 </div>
             </div>
         </div>

@@ -88,19 +88,19 @@
 						
                     
                         
-                    
-                        
 							
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/works/">My Works</a>
                         </li>
 							
 						
                     
                         
+                    
+                        
 							
                         <li>
-                            <a href="/works/">My Works</a>
+                            <a href="/tags/">Tags</a>
                         </li>
 							
 						
@@ -165,6 +165,8 @@
 
 </style>
 
+
+
 <header class="intro-header">
     <div class="container">
         <div class="row">
@@ -225,6 +227,47 @@
 <p>7.还有一个情况就是，<code><b>根布局</b>中的skin属性不起作用，目前的解决办法是在包上一层布局</code>，目前这种办法只是权宜之计</p>
 <h2 id="遇到的还未解决的问题"><a href="#遇到的还未解决的问题" class="headerlink" title="遇到的还未解决的问题"></a>遇到的还未解决的问题</h2><p>1.其实library中并没有对<code>padding</code>做限定，但是使用过程中遇到了几次，如果我的图片上<code>.9.png</code>或者是<code>xml做的drawable</code>的时候，设置了padding，加上夜间模式的属性之后<b><code>padding就会失效</code></b>。目前还没找到原因，待解决。</p>
 <p>2.发现了另外一个问题，我的搜索栏是放到 header 中的，第一次没问题，之后当 header 隐藏的时候，好像SearchBar 的夜间模式就不能切换了，但是 SearchBar 不隐藏的时候是可以切换的。</p>
+
+
+                <!--pay-->
+                <p class="btn_shang">
+                <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">¥打赏5毛</a>
+                </p>
+                
+                <div class="hide_box" style="display: none;"></div>
+                <div class="shang_box" style="display: none;">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">
+                    <img src="/assets/images/close.png" alt="取消" align="center"></a>
+                    <div class="shang_tit" align="center">
+                        <p>谢谢支持，我会继续努力的</p>
+                    </div>
+                    
+                    <div align="center">
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/wechat-pay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/alipay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    </div>
+                  
+                  
+                  
+                </div>
+
+                <script type="text/javascript">
+                    $(".pay_item").click(function() {
+                        $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                        var dataid = $(this).attr('data-id');
+                        $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "-code.jpeg");
+                        $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+                    });
+
+                    function dashangToggle() {
+                        $(".hide_box").fadeToggle();
+                        $(".shang_box").fadeToggle();
+                    };
+                </script>
 
                 <hr>
                 

@@ -88,19 +88,19 @@
 						
                     
                         
-                    
-                        
 							
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/works/">My Works</a>
                         </li>
 							
 						
                     
                         
+                    
+                        
 							
                         <li>
-                            <a href="/works/">My Works</a>
+                            <a href="/tags/">Tags</a>
                         </li>
 							
 						
@@ -164,6 +164,8 @@
     
 
 </style>
+
+
 
 <header class="intro-header">
     <div class="container">
@@ -229,6 +231,47 @@
 <h2 id="摄影"><a href="#摄影" class="headerlink" title="摄影"></a>摄影</h2><p>unsplash：<a href="https://unsplash.com/" target="_blank" rel="external">https://unsplash.com/</a><br>500px：<a href="https://500px.com/" target="_blank" rel="external">https://500px.com/</a><br>天空之城（大疆）：<a href="https://www.skypixel.com/events/photocontest" target="_blank" rel="external">https://www.skypixel.com/events/photocontest</a></p>
 <h2 id="学术论文（免费下载）"><a href="#学术论文（免费下载）" class="headerlink" title="学术论文（免费下载）"></a>学术论文（免费下载）</h2><p>Sci-Hub: <strong>scihub</strong>.org</p>
 <h2 id="查word-quote台词"><a href="#查word-quote台词" class="headerlink" title="查word/quote台词"></a>查word/quote台词</h2><p>根据台词找电影：<a href="http://www.quodb.com/" target="_blank" rel="external">http://www.quodb.com/</a><br>搜电影：<a href="http://www.imdb.com/" target="_blank" rel="external">http://www.imdb.com/</a></p>
+
+
+                <!--pay-->
+                <p class="btn_shang">
+                <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">¥打赏5毛</a>
+                </p>
+                
+                <div class="hide_box" style="display: none;"></div>
+                <div class="shang_box" style="display: none;">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">
+                    <img src="/assets/images/close.png" alt="取消" align="center"></a>
+                    <div class="shang_tit" align="center">
+                        <p>谢谢支持，我会继续努力的</p>
+                    </div>
+                    
+                    <div align="center">
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/wechat-pay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/alipay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    </div>
+                  
+                  
+                  
+                </div>
+
+                <script type="text/javascript">
+                    $(".pay_item").click(function() {
+                        $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                        var dataid = $(this).attr('data-id');
+                        $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "-code.jpeg");
+                        $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+                    });
+
+                    function dashangToggle() {
+                        $(".hide_box").fadeToggle();
+                        $(".shang_box").fadeToggle();
+                    };
+                </script>
 
                 <hr>
                 

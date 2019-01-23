@@ -88,19 +88,19 @@
 						
                     
                         
-                    
-                        
 							
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/works/">My Works</a>
                         </li>
 							
 						
                     
                         
+                    
+                        
 							
                         <li>
-                            <a href="/works/">My Works</a>
+                            <a href="/tags/">Tags</a>
                         </li>
 							
 						
@@ -164,6 +164,8 @@
     
 
 </style>
+
+
 
 <header class="intro-header">
     <div class="container">
@@ -232,6 +234,47 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;vector&gt;</div><div class="line">android:width</div><div class="line">android:height</div><div class="line">android:viewportWidth</div><div class="line">android:viewportHeight</div><div class="line">android:alpha</div><div class="line">&lt;group&gt;</div><div class="line">android:rotation</div><div class="line">android:pivotX</div><div class="line">android:pivotY</div><div class="line">android:scaleX</div><div class="line">android:scaleY</div><div class="line">android:translateX</div><div class="line">android:translateY</div><div class="line">&lt;path&gt;</div><div class="line">android:pathData</div><div class="line">android:fillColor</div><div class="line">android:strokeColor</div><div class="line">android:strokeWidth</div><div class="line">android:strokeAlpha</div><div class="line">android:fillAlpha</div><div class="line">android:strokeLineCap</div><div class="line">android:strokeLineJoin</div><div class="line">android:strokeMiterLimit</div></pre></td></tr></table></figure>
 <p>而且，只有5.0及以上的版本才支持<b>动态属性</b>，举个例子：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">android:fillColor=&quot;?android:attr/colorControlNormal&quot;</div></pre></td></tr></table></figure></p>
 <h2 id="打包方式"><a href="#打包方式" class="headerlink" title="打包方式"></a>打包方式</h2><p>因为版本问题，你可以有两种打包方式：<br>1.包里边既有vector image文件，也有png文件，这种是<b>最简单</b>的方法<br>2.根据API版本打不同的包，5.0以上的里边去掉生成的png文件，这样包会小很多。</p>
+
+
+                <!--pay-->
+                <p class="btn_shang">
+                <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">¥打赏5毛</a>
+                </p>
+                
+                <div class="hide_box" style="display: none;"></div>
+                <div class="shang_box" style="display: none;">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">
+                    <img src="/assets/images/close.png" alt="取消" align="center"></a>
+                    <div class="shang_tit" align="center">
+                        <p>谢谢支持，我会继续努力的</p>
+                    </div>
+                    
+                    <div align="center">
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/wechat-pay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/alipay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    </div>
+                  
+                  
+                  
+                </div>
+
+                <script type="text/javascript">
+                    $(".pay_item").click(function() {
+                        $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                        var dataid = $(this).attr('data-id');
+                        $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "-code.jpeg");
+                        $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+                    });
+
+                    function dashangToggle() {
+                        $(".hide_box").fadeToggle();
+                        $(".shang_box").fadeToggle();
+                    };
+                </script>
 
                 <hr>
                 
