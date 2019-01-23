@@ -169,12 +169,10 @@ pre code {
 .post-container .p {
     margin: 0 0 10px;
 }
-
-.btn_shang {
+.post-container .p .btn_shang {
     border-top: 1px solid rgba(0, 0, 0, 0.13);
 }
-
-.dashang {
+.post-container .btn_shang .dashang {
     display: block;
     width: 150px;
     margin: 5px auto;
