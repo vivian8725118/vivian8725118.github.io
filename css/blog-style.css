@@ -166,6 +166,44 @@ pre code {
     color: #337ab7;
 }
 
+.post-container .p {
+    margin: 0 0 10px;
+}
+.post-container .p .btn_shang {
+    border-top: 1px solid rgba(0, 0, 0, 0.13);
+}
+.post-container .btn_shang .dashang {
+    display: block;
+    width: 150px;
+    margin: 5px auto;
+    height: 35px;
+    line-height: 25px;
+    padding: 4px;
+    background-color: #e54544;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+.shang_payimg{
+    border: 1px solid gray;
+    padding: 7px;
+    cursor: pointer;
+    /*display: table-cell;*/
+    /*float: left;*/
+    width: 300px;
+    height:214px;
+    display: table-cell;
+    margin-right: 20px;
+}
+
+a:active, a:hover {
+    outline: 0;
+}
 
 article .post-container h1,
 article .post-container h2,
