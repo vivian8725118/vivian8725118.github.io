@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://vivianchen.cn/2017/09/11/hexo-blog-config/</loc>
+    
+    <lastmod>2019-01-24T05:50:19.923Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://vivianchen.cn/2019/01/20/activity-start-process/</loc>
     
     <lastmod>2019-01-23T15:04:36.792Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://vivianchen.cn/2019/01/03/2018-read-booklist/</loc>
     
     <lastmod>2019-01-10T09:08:05.045Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://vivianchen.cn/2017/09/11/hexo-blog-config/</loc>
-    
-    <lastmod>2018-01-03T14:31:46.655Z</lastmod>
     
   </url>
   
