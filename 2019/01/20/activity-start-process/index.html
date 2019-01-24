@@ -214,7 +214,7 @@
 <li>init进程：init是所有linux程序的起点，是Zygote的父进程。解析init.rc孵化出Zygote进程。</li>
 <li>Zygote进程：Zygote是所有Java进程的父进程，所有的App进程都是由Zygote进程fork生成的。</li>
 <li>SystemServer进程：System Server是Zygote孵化的第一个进程。SystemServer负责启动和管理整个Java framework，包含AMS，PMS等服务。</li>
-<li>Launcher：Zygote进程孵化的第一个App进程是Launcher。Launcher也就是</li>
+<li>Launcher：Zygote进程孵化的第一个App进程是Launcher。</li>
 </ul>
 <h2 id="1-init进程是什么？"><a href="#1-init进程是什么？" class="headerlink" title="1.init进程是什么？"></a>1.init进程是什么？</h2><p>Android是基于linux系统的，手机开机之后，linux内核进行加载。加载完成之后会启动init进程。<br>init进程会启动ServiceManager，孵化一些守护进程，并解析init.rc孵化Zygote进程。</p>
 <h2 id="2-Zygote进程是什么？"><a href="#2-Zygote进程是什么？" class="headerlink" title="2.Zygote进程是什么？"></a>2.Zygote进程是什么？</h2><p>所有的App进程都是由Zygote进程fork生成的，包括SystemServer进程。Zygote初始化后，会注册一个等待接受消息的socket，OS层会采用socket进行IPC通信。</p>
