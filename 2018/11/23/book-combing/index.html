@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Vivian陈薇在 Github 上的个人博客">
+    <meta name="keyword" content="Android,Vivian陈薇,Vivian8725118,Hexo,Mac,Android程序媛,简书,vivianchen,小彤花园">
+    <meta name="baidu-site-verification" content="d4fNZIBjpX"/>
+    <meta name="google-site-verification" content="mItZ_Q8fv5pHjnbFFPvX4UFPMS6RYGijZT2toCB2yhk" />
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Vivian陈薇" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+
+    <title>
+        
+        梳理：从混乱到有序｜Vivian陈薇&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://vivianchen.cn/2018/11/23/book-combing/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+    
+<link rel="stylesheet" href="/css/mob_share.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Vivian陈薇
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/works/">My Works</a>
+                        </li>
+							
+						
+                    
+                        
+							
+								
+							
+						
+                    
+                        
+                    
+					
+					
+						<li>
+							<a href="/about">About</a>
+						</li>
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+    }
+
+    
+
+</style>
+
+
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>梳理：从混乱到有序</h1>
+                    
+                    <span class="meta">
+                         作者 Vivian陈薇
+                        <span>
+                          日期 2018-11-23
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#学习"
+                           title="学习">学习</a>
+                        
+                        <a class="tag" href="/tags/#读书"
+                           title="读书">读书</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            梳理：从混乱到有序
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p><img src="http://upload-images.jianshu.io/upload_images/196894-76861a666401ee41?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>这是一本以时间管理、思维梳理为主题的书。作者从时间管理、如何达成目标、如何成为高段位的学习者、怎样让工作更有效率、如何提升思考能力等方面梳理你的工作、生活，让你的人生从混乱状态调整为有序状态，从而为人生提效。</p>
+<p>最近很喜欢看一些类似的书，正好看到这本。</p>
+<p>第一章里有一段话：</p>
+<blockquote>
+<p>比如，在复习时间很紧张的时候，会希望时间管理的方法能帮自己缓解压力，尽管你自己知道这个时候研究这些东西是舍本求末。比如，明知道要赶紧学习英语应付考试和工作，最后却沉迷于研究各种学习方法和理论，还为了这个跟人在论坛上吵架。又比如，项目到了deadline却还有很多事情没搞定的时候，却忙不迭地跑去研究“为什么你的项目总是失败”。</p>
+</blockquote>
+<blockquote>
+<p>你看，为了缓解压力，人们会强相遇逃避困难的事情，转而去做那些“看起来有用”的事情，最后反而耽误了时间，加重了压力，事情变得比以前更糟了。有趣的是，这种情况往往出现在那些“有企图心和上进心”的人们身上。</p>
+</blockquote>
+<p>看到这段的时候，完全被说中的感觉。最近有一些被卡住，试图缓解，之后就看了很多书，当然这时候看这种书效率尤其高。看完之后心里有了些许安慰，好像明白了一些事情，然后本来要做的事情还是停留在原地，并没有什么实质性进展，之后又开始类似的循环。</p>
+<p>上边只是过程中遇到的问题之一，下面还有几个我认为比较重要的问题，相信不只是我一个人遇到的问题。不知道你们有没有过这种情况，逛知乎、刷豆瓣、看各种知识付费内容，平时感觉很忙，但是停下来的时候，感觉一无所获一阵空虚？有时候知道自己该做什么，知道做什么会对自己有帮助，会变更好，但是却迟迟不想行动？还有时候比上边情况好一点，知道自己应该怎么做，也想做出行动，但是好像无从入手，像是围绕着一座城堡却找不到入口？</p>
+<p>好吧，上边的问题我都遇到过。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/196894-d2bedea8707d45d2?imageMogr2/auto-orient/strip%7CimageView2/2/w/240"></p>
+<p>大概分了一下类，有下面几种情况：</p>
+<p>（当然可能还有更多情况，我只说这几个😬）</p>
+<h2 id="1-没有目标，很迷茫"><a href="#1-没有目标，很迷茫" class="headerlink" title="1.没有目标，很迷茫"></a>1.没有目标，很迷茫</h2><p>迷茫的时候找个目标，制定合理的目标。</p>
+<p>不知道你们有没有过这种情况，大学期末考试前复习的时候，效率奇高（尤其是期末考试前的那个晚上）。在一个明确目标的指引下，仿佛一些都顺利了。</p>
+<p>毕业之后很多事情要自己想清楚目标，没有学校里那种老师会给你画一个范围之类的了，要想清楚自己想要什么，学会剖析自己，这个还蛮重要的。如果有一个清晰的目标指引着你，脑子就会比较清楚，而且更容易行动，而不是时间都花费在迷茫上。</p>
+<p>引用书中的三句话，有一个目标会有什么帮助？</p>
+<pre><code>首先，能帮我们认清方向
+
+其次，可以帮我们找到决策依据
+
+最后，可以让我们保持行动
+</code></pre>
+<h2 id="2-有目标，但不想做"><a href="#2-有目标，但不想做" class="headerlink" title="2.有目标，但不想做"></a>2.有目标，但不想做</h2><p>这种时候可能因为目标太大或者感觉难度很大，而有抗拒的心理。这种情况下，怎样能让自己开始有所行动？有一句话叫什么来着，万事开头难。其实自己肯定了解自己哪种情况会马上做，比如锻炼吧，让你一周锻炼五次，肯定想一下就感觉吃不消，或者不想做了。但是，如果把目标定的容易点，可以让自己能迈出第一步。</p>
+<h2 id="3-有目标，想做，但是阻碍很大或者无从入手"><a href="#3-有目标，想做，但是阻碍很大或者无从入手" class="headerlink" title="3.有目标，想做，但是阻碍很大或者无从入手"></a>3.有目标，想做，但是阻碍很大或者无从入手</h2><p>平时说要减肥的同学，一想起来就觉得很难，那是为什么？看看我们平时定的目标吧：两个月减掉10斤，不减掉20斤不换头像。结果呢，这个目标好像并不太好实现，然后或者拖着，或者不了了之了，在之后重新减肥还会觉得这件事好像很难的样子。其实可以做一个目标转换，把一个结果量化成每天要做的事情，比如把两个月减掉10斤的目标换一下，那就是一个月减掉5斤，差不多一周减掉1斤就可以了，这听起来是不是容易多了？假如我比较忙，怎么实现一周减一斤的目标呢，平时保证正常饮食，然后一周有三次运动，大概就可以了吧。</p>
+<p>这样一个听起来比较难的目标，拆解之后，发现其实也没有想象的那么难。人们通常会倾向于做比较容易的事情，这样对于行动起来，就又减小了一些阻力。</p>
+<h2 id="我将目标管理的整个过程分为五个步骤："><a href="#我将目标管理的整个过程分为五个步骤：" class="headerlink" title="我将目标管理的整个过程分为五个步骤："></a>我将目标管理的整个过程分为五个步骤：</h2><pre><code>1.设定目标：这一步里我们研究一下自己究竟想要什么。
+
+2.分解目标：看看为了得到我们想要的，需要做些什么。
+
+3.制订计划：在这一步我们可以确定什么时候做什么事。
+
+4.执行计划：就是一步步实现想法的过程。
+
+5.回顾总结：最后看看自己做得怎么样以及接下来要怎么改进。
+</code></pre>
+<p>目标管理看起来有点复杂，但其实只要记得做到这几件事就好了：</p>
+<p>先设定个目标，记得运用smart原则；再对目标进行分解，把大目标分解成小目标，小目标分解成可执行的任务；然后把这些任务做个排序，确保自己能在合适的时间有合适的资源执行合适的任务，这就是个计划了；借着就是按计划行事；最后在对整个或部分过程来个回顾和总结。</p>
+<h2 id="Smart原则："><a href="#Smart原则：" class="headerlink" title="Smart原则："></a>Smart原则：</h2><pre><code>Specific 明确具体的
+
+Measurable 可衡量的
+
+Attainable 可实现的
+
+Relevant 相关的
+
+Time-bound 有时限的
+</code></pre>
+<p>个人感觉，这本书还是又很帮助的，值得去看下。但是有一点，这种xxx方法论，都是辅助自己解决问题的东西，不要太迷恋，感觉掌握了xxx方法论，我就能xxx。这其中还有很多是要自己去实践，去遇见问题，解决问题的，方法论只是可能减少遇到问题时候的阻塞时间。</p>
+
+
+                <!--pay-->
+                <p class="btn_shang">
+                <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">¥打赏5毛</a>
+                </p>
+                
+                <div class="hide_box" style="display: none;"></div>
+                <div class="shang_box" style="display: none;">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">
+                    <img src="/assets/images/close.png" alt="取消" align="center"></a>
+                    <div class="shang_tit" align="center">
+                        <p>谢谢支持，我会继续努力的</p>
+                    </div>
+                    
+                    <div align="center">
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/wechat-pay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/alipay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    </div>
+                  
+                  
+                  
+                </div>
+
+                <script type="text/javascript">
+                    $(".pay_item").click(function() {
+                        $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                        var dataid = $(this).attr('data-id');
+                        $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "-code.jpeg");
+                        $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+                    });
+
+                    function dashangToggle() {
+                        $(".hide_box").fadeToggle();
+                        $(".shang_box").fadeToggle();
+                    };
+                </script>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/01/03/2018-read-booklist/" data-toggle="tooltip" data-placement="top"
+                           title="2018看过的书">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/09/11/hexo-blog-config/" data-toggle="tooltip" data-placement="top"
+                           title="Github Pages+Hexo+阿里云域名绑定">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+                <!--Mob Share-->
+                
+                     <!--MOB SHARE BEGIN-->
+<div class="post-spread">
+<div class="-hoofoo-share-title">分享文章</div>
+<div class="-hoofoo-share-buttons">
+    <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
+    <div class="-mob-share-weixin -hoofoo-share-weixin -hoofoo-share-ui-button"><i class="fa fa-weixin" aria-hidden="true"></i></div>
+    <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+        <li class="-mob-share-mingdao"><p>明道</p></li>
+        <li class="-mob-share-pengyou"><p>朋友网</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+        <li class="-mob-share-pocket"><p>Pocket</p></li>
+        <li class="-mob-share-google"><p>Google+</p></li>
+        <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+        <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+        <li class="-mob-share-linkedin"><p>Linkedin</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+</div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey={{theme.mob_share.appkey}}"></script>
+<!--MOB SHARE END-->
+                     {% if theme.mob_share.enable %}
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+{% endif %}
+                
+                
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDgxMi83MzY0">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%B2%A1%E6%9C%89%E7%9B%AE%E6%A0%87%EF%BC%8C%E5%BE%88%E8%BF%B7%E8%8C%AB"><span class="toc-text">1.没有目标，很迷茫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9C%89%E7%9B%AE%E6%A0%87%EF%BC%8C%E4%BD%86%E4%B8%8D%E6%83%B3%E5%81%9A"><span class="toc-text">2.有目标，但不想做</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9C%89%E7%9B%AE%E6%A0%87%EF%BC%8C%E6%83%B3%E5%81%9A%EF%BC%8C%E4%BD%86%E6%98%AF%E9%98%BB%E7%A2%8D%E5%BE%88%E5%A4%A7%E6%88%96%E8%80%85%E6%97%A0%E4%BB%8E%E5%85%A5%E6%89%8B"><span class="toc-text">3.有目标，想做，但是阻碍很大或者无从入手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%B0%86%E7%9B%AE%E6%A0%87%E7%AE%A1%E7%90%86%E7%9A%84%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B%E5%88%86%E4%B8%BA%E4%BA%94%E4%B8%AA%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-text">我将目标管理的整个过程分为五个步骤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smart%E5%8E%9F%E5%88%99%EF%BC%9A"><span class="toc-text">Smart原则：</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#学习"
+                           title="学习">学习</a>
+                        
+                        <a class="tag" href="/tags/#读书"
+                           title="读书">读书</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.jianshu.com/u/df40282480b4">小鄧子</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.kaedea.com">Kaede君</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://yifeng.studio/">亦枫</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://blog.coderclock.com">技术视界</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="https://tonnyl.github.io">Tonny</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://jerey.cn">Anderson</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://zqlite.com">zhangqinglian</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://oragekk.me">oragekk</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://yifeiyuan.me">程序亦非猿</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.jidanlee.com">Harlber</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.dajipai.cc">香脆的大鸡排</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="https://www.moretime.vip">红色物质</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/duanandwei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+              
+                    <li>
+                        <a target="_blank" href="http://jianshu.com/u/4a4eb4feee62">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-1x fa-inverse">简</i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Vivian陈薇 2021
+                    <br>
+                    <!-- 不蒜子计数 -->
+                    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                    <!-- 不蒜子计数 -->  
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">总访问量: <span id="busuanzi_value_site_pv"></span> 次</span>
+                    <br>
+                    <span id="busuanzi_container_site_uv" style='display:none'>总访客数: <span id="busuanzi_value_site_uv"></span> 人 </span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 0;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+        
+});
+</script> 
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://vivianchen.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'd6237b3ef7ace3d92cfaf9169538b06d';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://upload.jianshu.io/users/upload_avatars/196894/99323ae8-5924-4730-b73f-9d0d284ff243.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+{% if theme.mob_share.enable %}
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+{% endif %}
+</body>
+
+</html>

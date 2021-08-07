@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Vivian陈薇在 Github 上的个人博客">
+    <meta name="keyword" content="Android,Vivian陈薇,Vivian8725118,Hexo,Mac,Android程序媛,简书,vivianchen,小彤花园">
+    <meta name="baidu-site-verification" content="d4fNZIBjpX"/>
+    <meta name="google-site-verification" content="mItZ_Q8fv5pHjnbFFPvX4UFPMS6RYGijZT2toCB2yhk" />
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Vivian陈薇" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+
+    <title>
+        
+        Github Pages+Hexo+阿里云域名绑定｜Vivian陈薇&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://vivianchen.cn/2017/09/11/hexo-blog-config/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+    
+<link rel="stylesheet" href="/css/mob_share.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Vivian陈薇
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/works/">My Works</a>
+                        </li>
+							
+						
+                    
+                        
+							
+								
+							
+						
+                    
+                        
+                    
+					
+					
+						<li>
+							<a href="/about">About</a>
+						</li>
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+    }
+
+    
+
+</style>
+
+
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Github Pages+Hexo+阿里云域名绑定</h1>
+                    
+                    <span class="meta">
+                         作者 Vivian陈薇
+                        <span>
+                          日期 2017-09-11
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#hexo"
+                           title="hexo">hexo</a>
+                        
+                        <a class="tag" href="/tags/#github pages"
+                           title="github pages">github pages</a>
+                        
+                        <a class="tag" href="/tags/#绑定域名"
+                           title="绑定域名">绑定域名</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Github Pages+Hexo+阿里云域名绑定
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="1-Github-Pages"><a href="#1-Github-Pages" class="headerlink" title="1.Github Pages"></a>1.Github Pages</h2><p><code>Github Pages</code>可以免费托管，所以把博客托管到github上。</p>
+<p>首先，创建一个github仓库，仓库的命名格式为：<code>yourusername.github.io</code>，然后根据提示进行下一步。<br><img src="https://upload-images.jianshu.io/upload_images/196894-68d1bef204b0e286.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/png"></p>
+<h2 id="2-Hexo搭建博客"><a href="#2-Hexo搭建博客" class="headerlink" title="2.Hexo搭建博客"></a>2.Hexo搭建博客</h2><p>本博客中使用了<code>Anisina</code>的主题，所以会详细介绍下按照<code>Anisina</code>主题搭建的步骤。</p>
+<h3 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h3><p>1.首先要安装下node.js（官网下载）,如果已经安装可以跳过。<br>2.安装git（官网下载）<br>3.安装Hexo：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
+<p>安装成功后，使用version命令查看是否安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&amp; hexo version</span><br></pre></td></tr></table></figure>
+<p>4.本地静态hexo博客</p>
+<ul>
+<li>新建一个文件夹，作为你博客文件的根目录</li>
+<li>命令行进入该文件夹下,输入以下命令，生成模板：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
+<ul>
+<li>模板生成后，输入以下命令：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后可以运行<code>hexo s</code>命令查看是否搭建成功</li>
+</ul>
+<h3 id="2-下载主题"><a href="#2-下载主题" class="headerlink" title="2.下载主题"></a>2.下载主题</h3><p>在 themes 文件夹内，新增一个Anisina文件夹，并修改 _config.yml 内的 theme 设定<code>theme: Anisina</code>，即可切换到<code>Anisina</code>主题。然后把<code>Anisina</code>主题的内容clone到刚刚新建的Anisina文件夹下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/Haojen/hexo-theme-Anisina.git themes/Anisina</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-配置博客"><a href="#3-配置博客" class="headerlink" title="3.配置博客"></a>3.配置博客</h3><h4 id="1-配置博客封面图"><a href="#1-配置博客封面图" class="headerlink" title="1.配置博客封面图"></a>1.配置博客封面图</h4><p>在需要单独设置封面图的文章所对应的md文件里，添加配置header信息如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">header-img: http://upload-images.jianshu.io/upload_images/196894-95c037286850b891.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</span><br><span class="line">cdn: &#x27;header-off&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-用户信息配置"><a href="#2-用户信息配置" class="headerlink" title="2.用户信息配置"></a>2.用户信息配置</h4><p><em>注意：在主题的_config.yml中配置一下信息，而非博客根目录下的_config.yml中配置。ps:不过我的有些没起作用的就放到了根目录下的_config.yml中。</em></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">user_name: your name</span><br><span class="line">user_avatar: your avatar</span><br><span class="line">user_location: your location</span><br><span class="line">user_description: about you introduction</span><br><span class="line"></span><br><span class="line">// this info will show About page</span><br><span class="line">user_contact: </span><br><span class="line">user_introduction:</span><br><span class="line"></span><br><span class="line">// config you share info</span><br><span class="line">//以下的username请都改为自己的</span><br><span class="line">weibo_username: vivian8725118</span><br><span class="line">zhihu_username: vivian8725118</span><br><span class="line">github_username: vivian8725118</span><br><span class="line">twitter_username: vivian8725118</span><br><span class="line">facebook_username:  </span><br><span class="line">linkedin_username: </span><br></pre></td></tr></table></figure>
+
+<h4 id="3-创建About页面"><a href="#3-创建About页面" class="headerlink" title="3.创建About页面"></a>3.创建About页面</h4><p>在根目录下的<code>source</code>文件夹里创建一个<code>about</code>文件夹，然后在<code>about</code>文件夹里新建<code>index.md</code>文件,在文件中添加如下代码，并保存：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: about</span><br><span class="line">date: 2017-09-11 23:12:50</span><br><span class="line">layout: about</span><br></pre></td></tr></table></figure>
+<p>需要提一下的是，作者还没有支持对About页面内容的修改，所以本博客搭建的时候，直接在<code>themes/Anisina/layout/about.ejs</code>中修改的内容。about.ejs里边是html的格式，可以参照里边默认的html代码，修改为自己的内容。例如下面是修改为自己的博客地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;li&gt;简书《程序员》专题主编：&lt;a target=&quot;_blank&quot; href=&quot;http://www.jianshu.com/u/4a4eb4feee62&quot;&gt; 小彤花园 &lt;span class=&quot;glyphicon glyphicon-link&quot;&gt;&lt;/span&gt; &lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;掘金联合编辑：&lt;a target=&quot;_blank&quot; href=&quot;https://juejin.im/user/5645935a00b0814da4eacf92&quot;&gt; 小彤花园 &lt;span class=&quot;glyphicon glyphicon-link&quot;&gt;&lt;/span&gt; &lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;GitHub: &lt;a target=&quot;_blank&quot; href=&quot;https://www.github.com/vivian8725118&quot;&gt; vivian8725118 &lt;span class=&quot;glyphicon glyphicon-link&quot;&gt;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;CSDN: &lt;a target=&quot;_blank&quot; href=&quot;http://blog.csdn.net/vivian8725118&quot;&gt; vivian陈薇 &lt;span class=&quot;glyphicon glyphicon-link&quot;&gt;&lt;/a&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-创建Works页面"><a href="#4-创建Works页面" class="headerlink" title="4.创建Works页面"></a>4.创建Works页面</h4><p>在根目录下的source文件夹中创建works文件夹，如上新建一个<code>index.md</code>，添加如下内容到文件中，并保存：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: My Works</span><br><span class="line">date: 2017-09-11 23:16:50</span><br><span class="line">layout: works</span><br></pre></td></tr></table></figure>
+<p>然后在<code>source</code>文件夹下创建一个<code>_data</code>文件夹，打开文件夹，新建<code>project.json</code>文件，文件格式如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;Apple 官网临摹&quot;: &#123;</span><br><span class="line">    &quot;title&quot;: &quot;Apple 官网临摹&quot;,</span><br><span class="line">    &quot;subTitle&quot;: &quot;根据美版apple官网临摹&quot;,</span><br><span class="line">    &quot;img_link&quot;: &quot;http://o7bkkhiex.bkt.clouddn.com/item-apple.jpg&quot;,</span><br><span class="line">    &quot;use&quot; : [&quot;jQuery&quot;],</span><br><span class="line">    &quot;link&quot;: &quot;http://haojen.github.io/apple-linmo/&quot;,</span><br><span class="line">    &quot;data&quot;:&quot;2016.3&quot;,</span><br><span class="line">    &quot;direction&quot;: &quot;临摹 2016 年三月份 Apple 美版单页面。&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">   &quot;Anisina (阿尼丝娜)&quot;: &#123;</span><br><span class="line">    &quot;title&quot;: &quot;Anisina&quot;,</span><br><span class="line">    &quot;subTitle&quot;: &quot;基于 Hexo 制作的个人博客主题&quot;,</span><br><span class="line">    &quot;img_link&quot;: &quot;http://o7bkkhiex.bkt.clouddn.com/Anisina.png&quot;,</span><br><span class="line">    &quot;use&quot; : [&quot;jQuery&quot;,&quot;Bootstrap&quot;,&quot;Node.js&quot;,&quot;EJS&quot;,&quot;Hexo&quot;,&quot;SASS&quot;],</span><br><span class="line">    &quot;link&quot;: &quot;http://haojen.github.io/&quot;,</span><br><span class="line">    &quot;data&quot;: &quot;2016.5&quot;,</span><br><span class="line">    &quot;direction&quot;:</span><br><span class="line">        &quot;Hexo 是某位台湾友人基于 Node.js 编写的博客框架&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-添加评论系统"><a href="#5-添加评论系统" class="headerlink" title="5.添加评论系统"></a>5.添加评论系统</h4><p>主题中支持来比力的配置，所以在<code>_config.yml</code>配置文件中添加两行配置代码即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use_livere: true</span><br><span class="line">livere_uid: 你的来比力的注册uid</span><br></pre></td></tr></table></figure>
+
+<p>那么，如何找到<code>livere_uid</code>呢？<br>首先，在<a target="_blank" rel="noopener" href="https://livere.com/">来必力</a>的网站上注册一下，然后登陆，找到”<a target="_blank" rel="noopener" href="https://livere.com/insight/communite">管理页面</a>“，左边菜单中找到“代码管理”，会看到如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- 来必力City版安装代码 --&gt;</span><br><span class="line">&lt;div id=&quot;lv-container&quot; data-id=&quot;city&quot; data-uid=&quot;MTAyMC8zMDgxMi83MzY0&quot;&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">   (function(d, s) &#123;</span><br><span class="line">       var j, e = d.getElementsByTagName(s)[0];</span><br><span class="line"></span><br><span class="line">       if (typeof LivereTower === &#x27;function&#x27;) &#123; return; &#125;</span><br><span class="line"></span><br><span class="line">       j = d.createElement(s);</span><br><span class="line">       j.src = &#x27;https://cdn-city.livere.com/js/embed.dist.js&#x27;;</span><br><span class="line">       j.async = true;</span><br><span class="line"></span><br><span class="line">       e.parentNode.insertBefore(j, e);</span><br><span class="line">   &#125;)(document, &#x27;script&#x27;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;noscript&gt;为正常使用来必力评论功能请激活JavaScript&lt;/noscript&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;!-- City版安装代码已完成 --&gt;</span><br></pre></td></tr></table></figure>
+<p>代码中的<code>data-uid</code>就是我们所需要的<code>livere_uid</code>。</p>
+<h4 id="6-添加百度统计"><a href="#6-添加百度统计" class="headerlink" title="6.添加百度统计"></a>6.添加百度统计</h4><p>主题中添加了百度统计的js代码，在配置文件中直接添加<code>track_id</code>即可:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ba_track_id: your track id</span><br></pre></td></tr></table></figure>
+
+<p>如何找到ba_track_id？<br>同理，在<a target="_blank" rel="noopener" href="https://tongji.baidu.com/">百度统计</a>网站注册登陆，在【管理】菜单中找到【代码管理】-&gt;【代码获取】，可以看到一段js代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">  var hm = document.createElement(&quot;script&quot;);</span><br><span class="line">  hm.src = &quot;https://hm.baidu.com/hm.js?d6237b3ef7ace3d92cfaf9169538b06d&quot;;</span><br><span class="line">  var s = document.getElementsByTagName(&quot;script&quot;)[0]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>  hm.src = &quot;https://hm.baidu.com/hm.js?d6237b3ef7ace3d92cfaf9169538b06d&quot;;</code>这句代码中?后边的这一串就是我们所需要的<code>ba_track_id</code>。</p>
+<h4 id="7-部署Hexo博客"><a href="#7-部署Hexo博客" class="headerlink" title="7.部署Hexo博客"></a>7.部署Hexo博客</h4><ul>
+<li>建站</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init yourname</span><br><span class="line">cd yourname </span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置_config.yml的部署:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: http://github.com/yousername/yourusername.github.io</span><br><span class="line">  branch: master #默认master</span><br></pre></td></tr></table></figure>
+<ul>
+<li>清除缓存</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生成静态网页</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+<ul>
+<li>本地查看效果，执行完后可以通过<code>http://localhost:4000</code>查看本地效果</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<ul>
+<li>部署到git</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-绑定阿里云域名"><a href="#3-绑定阿里云域名" class="headerlink" title="3.绑定阿里云域名"></a>3.绑定阿里云域名</h2><p>之前在阿里云买了域名，域名购买成功之后要等待实名认证。</p>
+<h3 id="1-添加CNAME文件"><a href="#1-添加CNAME文件" class="headerlink" title="1.添加CNAME文件"></a>1.添加CNAME文件</h3><p>在根目录下的<code>source</code>文件夹下新建<code>CNAME</code>文件，没有后缀。</p>
+<p>在Sublime Text中打开<code>CNAME</code>文件，在里边添加你的域名信息，如图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/196894-f3322d2e875137ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/594/format/png"></p>
+<p>保存之后，重新部署到github pages上。</p>
+<h3 id="2-给github项目添加"><a href="#2-给github项目添加" class="headerlink" title="2.给github项目添加"></a>2.给github项目添加</h3><p>在项目的<code>Settings</code>中，添加<code>Custom domain</code>到自己的域名：<br><img src="https://upload-images.jianshu.io/upload_images/196894-42ad9712d39ab2d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/png"></p>
+<h3 id="3-给域名添加解析记录"><a href="#3-给域名添加解析记录" class="headerlink" title="3.给域名添加解析记录"></a>3.给域名添加解析记录</h3><p>1.ping你自己的<code>yourname.github.io</code>获取到ip地址：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/196894-09d97325db24bfec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/png"></p>
+<p>2.打开域名的解析列表，添加两条解析记录：<br><img src="https://upload-images.jianshu.io/upload_images/196894-bfcbc4d1d5cddcc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/png"></p>
+<p>更换之后，可能需要等一段时间才能生效，差不多就大功告成啦。</p>
+
+
+                <!--pay-->
+                <p class="btn_shang">
+                <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">¥打赏5毛</a>
+                </p>
+                
+                <div class="hide_box" style="display: none;"></div>
+                <div class="shang_box" style="display: none;">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">
+                    <img src="/assets/images/close.png" alt="取消" align="center"></a>
+                    <div class="shang_tit" align="center">
+                        <p>谢谢支持，我会继续努力的</p>
+                    </div>
+                    
+                    <div align="center">
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/wechat-pay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/alipay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    </div>
+                  
+                  
+                  
+                </div>
+
+                <script type="text/javascript">
+                    $(".pay_item").click(function() {
+                        $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                        var dataid = $(this).attr('data-id');
+                        $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "-code.jpeg");
+                        $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+                    });
+
+                    function dashangToggle() {
+                        $(".hide_box").fadeToggle();
+                        $(".shang_box").fadeToggle();
+                    };
+                </script>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/11/23/book-combing/" data-toggle="tooltip" data-placement="top"
+                           title="梳理：从混乱到有序">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/08/03/rxjava-using-scene/" data-toggle="tooltip" data-placement="top"
+                           title="RxJava使用场景">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+                <!--Mob Share-->
+                
+                     <!--MOB SHARE BEGIN-->
+<div class="post-spread">
+<div class="-hoofoo-share-title">分享文章</div>
+<div class="-hoofoo-share-buttons">
+    <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
+    <div class="-mob-share-weixin -hoofoo-share-weixin -hoofoo-share-ui-button"><i class="fa fa-weixin" aria-hidden="true"></i></div>
+    <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+        <li class="-mob-share-mingdao"><p>明道</p></li>
+        <li class="-mob-share-pengyou"><p>朋友网</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+        <li class="-mob-share-pocket"><p>Pocket</p></li>
+        <li class="-mob-share-google"><p>Google+</p></li>
+        <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+        <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+        <li class="-mob-share-linkedin"><p>Linkedin</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+</div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey={{theme.mob_share.appkey}}"></script>
+<!--MOB SHARE END-->
+                     {% if theme.mob_share.enable %}
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+{% endif %}
+                
+                
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDgxMi83MzY0">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Github-Pages"><span class="toc-text">1.Github Pages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">2.Hexo搭建博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">1.准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8B%E8%BD%BD%E4%B8%BB%E9%A2%98"><span class="toc-text">2.下载主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E5%8D%9A%E5%AE%A2"><span class="toc-text">3.配置博客</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE%E5%8D%9A%E5%AE%A2%E5%B0%81%E9%9D%A2%E5%9B%BE"><span class="toc-text">1.配置博客封面图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E9%85%8D%E7%BD%AE"><span class="toc-text">2.用户信息配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BAAbout%E9%A1%B5%E9%9D%A2"><span class="toc-text">3.创建About页面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%88%9B%E5%BB%BAWorks%E9%A1%B5%E9%9D%A2"><span class="toc-text">4.创建Works页面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F"><span class="toc-text">5.添加评论系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%B7%BB%E5%8A%A0%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1"><span class="toc-text">6.添加百度统计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2"><span class="toc-text">7.部署Hexo博客</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BB%91%E5%AE%9A%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D"><span class="toc-text">3.绑定阿里云域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B7%BB%E5%8A%A0CNAME%E6%96%87%E4%BB%B6"><span class="toc-text">1.添加CNAME文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BB%99github%E9%A1%B9%E7%9B%AE%E6%B7%BB%E5%8A%A0"><span class="toc-text">2.给github项目添加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%99%E5%9F%9F%E5%90%8D%E6%B7%BB%E5%8A%A0%E8%A7%A3%E6%9E%90%E8%AE%B0%E5%BD%95"><span class="toc-text">3.给域名添加解析记录</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#hexo"
+                           title="hexo">hexo</a>
+                        
+                        <a class="tag" href="/tags/#github pages"
+                           title="github pages">github pages</a>
+                        
+                        <a class="tag" href="/tags/#绑定域名"
+                           title="绑定域名">绑定域名</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.jianshu.com/u/df40282480b4">小鄧子</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.kaedea.com">Kaede君</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://yifeng.studio/">亦枫</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://blog.coderclock.com">技术视界</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="https://tonnyl.github.io">Tonny</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://jerey.cn">Anderson</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://zqlite.com">zhangqinglian</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://oragekk.me">oragekk</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://yifeiyuan.me">程序亦非猿</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.jidanlee.com">Harlber</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.dajipai.cc">香脆的大鸡排</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="https://www.moretime.vip">红色物质</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/duanandwei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+              
+                    <li>
+                        <a target="_blank" href="http://jianshu.com/u/4a4eb4feee62">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-1x fa-inverse">简</i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Vivian陈薇 2021
+                    <br>
+                    <!-- 不蒜子计数 -->
+                    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                    <!-- 不蒜子计数 -->  
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">总访问量: <span id="busuanzi_value_site_pv"></span> 次</span>
+                    <br>
+                    <span id="busuanzi_container_site_uv" style='display:none'>总访客数: <span id="busuanzi_value_site_uv"></span> 人 </span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 0;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+        
+});
+</script> 
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://vivianchen.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'd6237b3ef7ace3d92cfaf9169538b06d';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://upload.jianshu.io/users/upload_avatars/196894/99323ae8-5924-4730-b73f-9d0d284ff243.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+{% if theme.mob_share.enable %}
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+{% endif %}
+</body>
+
+</html>

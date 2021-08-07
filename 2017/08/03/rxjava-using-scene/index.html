@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Vivian陈薇在 Github 上的个人博客">
+    <meta name="keyword" content="Android,Vivian陈薇,Vivian8725118,Hexo,Mac,Android程序媛,简书,vivianchen,小彤花园">
+    <meta name="baidu-site-verification" content="d4fNZIBjpX"/>
+    <meta name="google-site-verification" content="mItZ_Q8fv5pHjnbFFPvX4UFPMS6RYGijZT2toCB2yhk" />
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Vivian陈薇" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+
+    <title>
+        
+        RxJava使用场景｜Vivian陈薇&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://vivianchen.cn/2017/08/03/rxjava-using-scene/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+    
+<link rel="stylesheet" href="/css/mob_share.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Vivian陈薇
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/works/">My Works</a>
+                        </li>
+							
+						
+                    
+                        
+							
+								
+							
+						
+                    
+                        
+                    
+					
+					
+						<li>
+							<a href="/about">About</a>
+						</li>
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+    }
+
+    
+
+</style>
+
+
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>RxJava使用场景</h1>
+                    
+                    <span class="meta">
+                         作者 Vivian陈薇
+                        <span>
+                          日期 2017-08-03
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Android"
+                           title="Android">Android</a>
+                        
+                        <a class="tag" href="/tags/#rxjava"
+                           title="rxjava">rxjava</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            RxJava使用场景
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="1-线程切换"><a href="#1-线程切换" class="headerlink" title="1.线程切换"></a>1.线程切换</h2><p>subscribeOn()</p>
+<p>observeOn()</p>
+<h3 id="subscribeOn-和observeOn-的区别："><a href="#subscribeOn-和observeOn-的区别：" class="headerlink" title="subscribeOn()和observeOn()的区别："></a>subscribeOn()和observeOn()的区别：</h3><ul>
+<li>subscribeOn()主要改变的是订阅的线程，即call()执行的线程;</li>
+<li>observeOn()主要改变的是发送的线程，即onNext()执行的线程。</li>
+</ul>
+<h3 id="Scheduler进程调度"><a href="#Scheduler进程调度" class="headerlink" title="Scheduler进程调度"></a>Scheduler进程调度</h3><p>Schedulers.immediate():默认的，当前线程</p>
+<p>Schedulers.newThread():新建的线程</p>
+<p>Schedulers.io()：采用了线程池，内部是一个不限制线程数量的线程池，用于io操作</p>
+<p>Schedulers.comutation()：线程池，线程池中的线程数量取决于CPU的核数，通常用于CPU密集操作，如：数据读写操作、解析，图形处理</p>
+<h2 id="2-flatmap-接口依赖"><a href="#2-flatmap-接口依赖" class="headerlink" title="2.flatmap 接口依赖"></a>2.flatmap 接口依赖</h2><p>返回Observable，处理嵌套请求</p>
+<p>我有时候用来做连续请求，比如首页多类型的请求</p>
+<h2 id="3-merge-接口合并"><a href="#3-merge-接口合并" class="headerlink" title="3.merge 接口合并"></a>3.merge 接口合并</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Observable&lt;T&gt; a=xxx;</span><br><span class="line">Observable&lt;T&gt; b=xxx;</span><br><span class="line">Observable.merge(a,b).subscribe(xxx);</span><br></pre></td></tr></table></figure>
+
+<p>接口结果类型相同的时候可以直接Observable<T></T></p>
+<p>接口结果类型不同的时候可以用?代替T</p>
+<p>只有当这两个请求都完成后才能更新UI</p>
+<h2 id="4-concat-构建多级缓存"><a href="#4-concat-构建多级缓存" class="headerlink" title="4.concat 构建多级缓存"></a>4.concat 构建多级缓存</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Observable.concat(getFromMemory(),getFromDisk(),getFromNet())</span><br><span class="line">.takeFirst(new Func1&lt;Bitmap,Boolean&gt;()&#123;...&#125;);//别忘了takeFirst</span><br></pre></td></tr></table></figure>
+
+<p>不要忘记用takeFirst()，concat按顺序将它们串联。</p>
+<h2 id="5-timer-定时器"><a href="#5-timer-定时器" class="headerlink" title="5.timer 定时器"></a>5.timer 定时器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Observable.timer(2,TimeUnit.SECONDS).subscribe();</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-interval-周期任务"><a href="#6-interval-周期任务" class="headerlink" title="6.interval 周期任务"></a>6.interval 周期任务</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Observable.interval(5,TimeUnit.SECONDS).subscribe();</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-filter-数据过滤"><a href="#7-filter-数据过滤" class="headerlink" title="7.filter 数据过滤"></a>7.filter 数据过滤</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Observable.from(list).filter(new Func1&lt;String,Boolean&gt;)&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Boolean call(String s)&#123;</span><br><span class="line">        return !TextUtils.isEmpty(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-throttleFirst-界面防抖动"><a href="#8-throttleFirst-界面防抖动" class="headerlink" title="8.throttleFirst 界面防抖动"></a>8.throttleFirst 界面防抖动</h2><p>防止多次点击，重复打开界面，类似于自己写的NoDoubleClickListener</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RxView.clicks(btn).throttleFirst(1L,TimeUnit.SECONDS).subscribe();</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-just-老接口适配"><a href="#9-just-老接口适配" class="headerlink" title="9.just 老接口适配"></a>9.just 老接口适配</h2><p>将一些方法返回类型转为Observable</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Observable.just(x,y).subscribe(new Action1&lt;Integer&gt;()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void call(Integer result)&#123;</span><br><span class="line">        print(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="10-响应式界面"><a href="#10-响应式界面" class="headerlink" title="10.响应式界面"></a>10.响应式界面</h2><p>例如登录的时候，只有用户名和密码都不空的时候，登录按钮才可点击</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Observable&lt;String&gt; username=RxTextView.textChanges(usernameEditText);</span><br><span class="line">Observable&lt;String&gt; psd=RxTextView.textChanges(pswEditText);</span><br><span class="line"></span><br><span class="line">Observable.combintLatest(username,psd,new Func2&lt;String,String,Boolean&gt;()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Boolean call(String username,String psd)&#123;</span><br><span class="line">        return !TextUtils.isEmpty(username)&amp;&amp;!TextUtils.isEmpty(psd);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).subscribe(xxx);</span><br></pre></td></tr></table></figure>
+
+<h2 id="11-map"><a href="#11-map" class="headerlink" title="11.map"></a>11.map</h2><p>处理数据，可以返回不同数据的Observable</p>
+<h2 id="12-connect-广播"><a href="#12-connect-广播" class="headerlink" title="12.connect 广播"></a>12.connect 广播</h2><p>同时发送消息进行操作</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ConnectObservable&lt;T&gt; broadcastObservable=myFirstObservable.</span><br><span class="line">    subscribeOn(Schedulers.computation())</span><br><span class="line">    .map(xxx)</span><br><span class="line">    .publish();//记住要publish</span><br><span class="line"></span><br><span class="line">broadcastObservable.subscribeOn(Schedulers.io())</span><br><span class="line">    .subscribe(xxx);</span><br><span class="line"></span><br><span class="line">broadcastObservable.observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">    .subscribe(xxx);</span><br><span class="line"></span><br><span class="line">broadcaseObservable.connect();//最后要connect(),只有在调用connect后才会发送数据</span><br></pre></td></tr></table></figure>
+
+<h2 id="要注意的地方"><a href="#要注意的地方" class="headerlink" title="要注意的地方"></a>要注意的地方</h2><p>主动取消订阅，防止内存泄漏。一般在BaseActivity或者BaseFragment中统一取消订阅，还可以用RxLifeCycle库来取消订阅，帮我们在组件声明周期的某个阶段自动取消订阅。</p>
+<p>提供了bindToLifeCycle()和bindUntilEvent()来绑定生命周期和事件。</p>
+<h3 id="bindToLifeCycle"><a href="#bindToLifeCycle" class="headerlink" title="bindToLifeCycle:"></a>bindToLifeCycle:</h3><p>activity需要继承RxAppCompatActivity</p>
+<p>在onResume中绑定的话，会在对应的onPause里边取消绑定</p>
+<p>onStart订阅-&gt;onStop中取消</p>
+<p>onCreate订阅-&gt;onDestory取消</p>
+<h3 id="bindUntilEvent"><a href="#bindUntilEvent" class="headerlink" title="bindUntilEvent:"></a>bindUntilEvent:</h3><p>activity需要继承RxAppCompatActivity</p>
+<p>在类似onclick事件中绑定，在onPause里边解除绑定</p>
+
+
+                <!--pay-->
+                <p class="btn_shang">
+                <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">¥打赏5毛</a>
+                </p>
+                
+                <div class="hide_box" style="display: none;"></div>
+                <div class="shang_box" style="display: none;">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">
+                    <img src="/assets/images/close.png" alt="取消" align="center"></a>
+                    <div class="shang_tit" align="center">
+                        <p>谢谢支持，我会继续努力的</p>
+                    </div>
+                    
+                    <div align="center">
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/wechat-pay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/alipay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    </div>
+                  
+                  
+                  
+                </div>
+
+                <script type="text/javascript">
+                    $(".pay_item").click(function() {
+                        $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                        var dataid = $(this).attr('data-id');
+                        $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "-code.jpeg");
+                        $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+                    });
+
+                    function dashangToggle() {
+                        $(".hide_box").fadeToggle();
+                        $(".shang_box").fadeToggle();
+                    };
+                </script>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/09/11/hexo-blog-config/" data-toggle="tooltip" data-placement="top"
+                           title="Github Pages+Hexo+阿里云域名绑定">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/10/25/webview-nestedscrollview/" data-toggle="tooltip" data-placement="top"
+                           title="关于WebView和NestedScrollView奇奇怪怪的问题">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+                <!--Mob Share-->
+                
+                     <!--MOB SHARE BEGIN-->
+<div class="post-spread">
+<div class="-hoofoo-share-title">分享文章</div>
+<div class="-hoofoo-share-buttons">
+    <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
+    <div class="-mob-share-weixin -hoofoo-share-weixin -hoofoo-share-ui-button"><i class="fa fa-weixin" aria-hidden="true"></i></div>
+    <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+        <li class="-mob-share-mingdao"><p>明道</p></li>
+        <li class="-mob-share-pengyou"><p>朋友网</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+        <li class="-mob-share-pocket"><p>Pocket</p></li>
+        <li class="-mob-share-google"><p>Google+</p></li>
+        <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+        <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+        <li class="-mob-share-linkedin"><p>Linkedin</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+</div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey={{theme.mob_share.appkey}}"></script>
+<!--MOB SHARE END-->
+                     {% if theme.mob_share.enable %}
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+{% endif %}
+                
+                
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDgxMi83MzY0">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BA%BF%E7%A8%8B%E5%88%87%E6%8D%A2"><span class="toc-text">1.线程切换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#subscribeOn-%E5%92%8CobserveOn-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-text">subscribeOn()和observeOn()的区别：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scheduler%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-text">Scheduler进程调度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-flatmap-%E6%8E%A5%E5%8F%A3%E4%BE%9D%E8%B5%96"><span class="toc-text">2.flatmap 接口依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-merge-%E6%8E%A5%E5%8F%A3%E5%90%88%E5%B9%B6"><span class="toc-text">3.merge 接口合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-concat-%E6%9E%84%E5%BB%BA%E5%A4%9A%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="toc-text">4.concat 构建多级缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-timer-%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-text">5.timer 定时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-interval-%E5%91%A8%E6%9C%9F%E4%BB%BB%E5%8A%A1"><span class="toc-text">6.interval 周期任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-filter-%E6%95%B0%E6%8D%AE%E8%BF%87%E6%BB%A4"><span class="toc-text">7.filter 数据过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-throttleFirst-%E7%95%8C%E9%9D%A2%E9%98%B2%E6%8A%96%E5%8A%A8"><span class="toc-text">8.throttleFirst 界面防抖动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-just-%E8%80%81%E6%8E%A5%E5%8F%A3%E9%80%82%E9%85%8D"><span class="toc-text">9.just 老接口适配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%95%8C%E9%9D%A2"><span class="toc-text">10.响应式界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-map"><span class="toc-text">11.map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-connect-%E5%B9%BF%E6%92%AD"><span class="toc-text">12.connect 广播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-text">要注意的地方</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bindToLifeCycle"><span class="toc-text">bindToLifeCycle:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bindUntilEvent"><span class="toc-text">bindUntilEvent:</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Android"
+                           title="Android">Android</a>
+                        
+                        <a class="tag" href="/tags/#rxjava"
+                           title="rxjava">rxjava</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.jianshu.com/u/df40282480b4">小鄧子</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.kaedea.com">Kaede君</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://yifeng.studio/">亦枫</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://blog.coderclock.com">技术视界</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="https://tonnyl.github.io">Tonny</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://jerey.cn">Anderson</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://zqlite.com">zhangqinglian</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://oragekk.me">oragekk</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://yifeiyuan.me">程序亦非猿</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.jidanlee.com">Harlber</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.dajipai.cc">香脆的大鸡排</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="https://www.moretime.vip">红色物质</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/duanandwei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+              
+                    <li>
+                        <a target="_blank" href="http://jianshu.com/u/4a4eb4feee62">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-1x fa-inverse">简</i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Vivian陈薇 2021
+                    <br>
+                    <!-- 不蒜子计数 -->
+                    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                    <!-- 不蒜子计数 -->  
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">总访问量: <span id="busuanzi_value_site_pv"></span> 次</span>
+                    <br>
+                    <span id="busuanzi_container_site_uv" style='display:none'>总访客数: <span id="busuanzi_value_site_uv"></span> 人 </span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 0;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+        
+});
+</script> 
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://vivianchen.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'd6237b3ef7ace3d92cfaf9169538b06d';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://upload.jianshu.io/users/upload_avatars/196894/99323ae8-5924-4730-b73f-9d0d284ff243.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+{% if theme.mob_share.enable %}
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+{% endif %}
+</body>
+
+</html>

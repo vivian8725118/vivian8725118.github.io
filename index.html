@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Vivian陈薇在 Github 上的个人博客">
+    <meta name="keyword" content="Android,Vivian陈薇,Vivian8725118,Hexo,Mac,Android程序媛,简书,vivianchen,小彤花园">
+    <meta name="baidu-site-verification" content="d4fNZIBjpX"/>
+    <meta name="google-site-verification" content="mItZ_Q8fv5pHjnbFFPvX4UFPMS6RYGijZT2toCB2yhk" />
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Vivian陈薇" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+
+    <title>
+        
+        Vivian陈薇&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://vivianchen.cn/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+    
+<link rel="stylesheet" href="/css/mob_share.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
+" data-ishome = "true" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Vivian陈薇
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/works/">My Works</a>
+                        </li>
+							
+						
+                    
+                        
+							
+								
+							
+						
+                    
+                        
+                    
+					
+					
+						<li>
+							<a href="/about">About</a>
+						</li>
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+
+<style>
+
+    .custom-haojen-container .post-preview:nth-of-type(1),
+    .custom-haojen-container .post-preview-poetry:nth-of-type(1) {
+        text-align: center;
+        background-repeat: no-repeat;
+        border-radius: 3px;
+        background-size: cover;
+        padding: 0;
+        height: 300px;
+        display: table;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.16);
+    }
+
+    /*去掉诗歌的背景图片*/
+    .custom-haojen-container .post-preview-poetry:nth-of-type(1) {
+        background-image: none !important;
+        background-color: rgba(255, 248, 220, 0.5);
+    }
+
+    .custom-haojen-container .post-preview:nth-child(1) h2,
+    .custom-haojen-container .post-preview:nth-child(1) .post-meta,
+    .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
+        text-shadow: 0 0 40px rgba(0, 0, 0, 1);
+        letter-spacing: 1px;
+        color: #fff;
+        margin-top: 0;
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    .custom-haojen-container .post-preview:nth-child(1) .post-meta {
+        font-size: .9em;
+        font-weight: 300;
+        margin-top: 0;
+    }
+
+    .custom-haojen-container .post-preview-poetry:nth-child(1) .post-subtitle {
+        letter-spacing: 6px;
+        font-size: 18px;
+        font-family: unset;
+        font-weight: 400;
+        color: rgba(0, 0, 0, .75)
+    }
+
+    /*不显示摘要*/
+    .custom-haojen-container .post-preview:nth-child(1) .post-content-preview {
+        display: none
+    }
+
+    /*只第一个显示背景图片*/
+    .custom-haojen-container .post-preview:not(:nth-child(1)) {
+        background-image: none !important;
+    }
+
+    /*第一个分界线去掉*/
+    .custom-haojen-container hr:nth-of-type(1) {
+        display: none;
+    }
+
+    /*主题*/
+    .custom-haojen-container .post-preview:nth-of-type(1) > a {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    /*诗词标题*/
+    .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
+        font-size: 35px;
+        font-family: STKaiti;
+        color: rgba(0, 0, 0, .8);
+    }
+
+    .custom-haojen-container .post-preview-poetry:nth-of-type(1) .post-meta {
+        color: #0e2231;
+    }
+
+    @media (max-width: 768px) {
+        .custom-haojen-container .post-preview:nth-child(1) {
+            height: 240px;
+        }
+
+        .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
+            font-size: 28px !important;
+            margin-top: 0;
+        }
+
+        .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .custom-haojen-container .post-preview:nth-of-type(1) > a {
+            padding: 20px
+        }
+    }
+
+    /*手机屏幕*/
+    @media (max-width: 400px) {
+        .custom-haojen-container .post-preview:nth-child(1) {
+            height: 195px;
+        }
+
+        .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
+            font-size: 20px !important;
+        }
+
+        .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
+            font-size: 16px;
+        }
+
+        .custom-haojen-container .post-preview:nth-child(1) a {
+            padding: 30px 20px;
+        }
+    }
+</style>
+
+<!-- Page Header -->
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
+    <div class="row">
+        <header class="intro-header">
+            <div class="container">
+                <div class="site-heading text-center">
+                    <div class="about-me">
+                        <!--移动端头部显示-->
+                        <img src="http://upload.jianshu.io/users/upload_avatars/196894/99323ae8-5924-4730-b73f-9d0d284ff243.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240"/>
+                        <h5><a href="/about/">Vivian陈薇</a></h5>
+                        <p>《程序员》专题主编 Android程序媛</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+<!-- Main Content -->
+<div class="container custom-haojen-container">
+    <!-- Post Container -->
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
+            <!-- Main Content -->
+
+
+
+<div class="post-preview "
+     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+    <a href="/2019/06/15/电影 | 猫の恩返し/">
+        <h2 class="post-title">
+            电影 | 猫の恩返し
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2019-06-15
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                公众号「小彤花园」同步更新
+
+昨天在微博上看了一部电影《猫的报恩》。
+《猫的报恩》（猫の恩返し）是吉卜力工作室2002年推出的一部动画电影。故事改编自漫画家柊葵的漫画。
+《猫的报恩》可以说是《侧耳倾听》的番外篇，主角正是《侧耳倾听》里神秘帅气的猫男爵以及那位胖胖的、神出鬼没的大白猫，女主角小春是..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+    <a href="/2019/01/20/activity-start-process/">
+        <h2 class="post-title">
+            Activity启动流程
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2019-01-20
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                引言Activity启动流程很多文章都已经说过了，这里说一下自己的理解。Activity启动流程分两种:
+
+一种是启动正在运行的app的Activity，即启动子Activity。如无特殊声明默认和启动该activity的activity处于同一进程。如果有声明在一个新的进程中，则处于两个进程。..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+    <a href="/2019/01/03/2018-read-booklist/">
+        <h2 class="post-title">
+            2018看过的书
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2019-01-03
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+
+公众号“小彤花园”同步更新
+
+今年看了很多书，除了一些技术专业的书，其余大部分是心理学相关的书。为什么读心理学的书呢？大概是因为这个年纪想更好的了解自己吧。
+一部分是买了实体书，一部分用kindle读。其实看心理学的书速度蛮快的，尤其是在kindle上，时间久了也找到了一些快速阅读的小技巧。..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+    <a href="/2018/11/23/book-combing/">
+        <h2 class="post-title">
+            梳理：从混乱到有序
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-23
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+这是一本以时间管理、思维梳理为主题的书。作者从时间管理、如何达成目标、如何成为高段位的学习者、怎样让工作更有效率、如何提升思考能力等方面梳理你的工作、生活，让你的人生从混乱状态调整为有序状态，从而为人生提效。
+最近很喜欢看一些类似的书，正好看到这本。
+第一章里有一段话：
+
+比如，在复习时间很紧..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+    <a href="/2017/09/11/hexo-blog-config/">
+        <h2 class="post-title">
+            Github Pages+Hexo+阿里云域名绑定
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-09-11
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                1.Github PagesGithub Pages可以免费托管，所以把博客托管到github上。
+首先，创建一个github仓库，仓库的命名格式为：yourusername.github.io，然后根据提示进行下一步。
+2.Hexo搭建博客本博客中使用了Anisina的主题，所以会详细介绍下按..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+    <a href="/2017/08/03/rxjava-using-scene/">
+        <h2 class="post-title">
+            RxJava使用场景
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-08-03
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                1.线程切换subscribeOn()
+observeOn()
+subscribeOn()和observeOn()的区别：
+subscribeOn()主要改变的是订阅的线程，即call()执行的线程;
+observeOn()主要改变的是发送的线程，即onNext()执行的线程。
+
+Schedul..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+    <a href="/2016/10/25/webview-nestedscrollview/">
+        <h2 class="post-title">
+            关于WebView和NestedScrollView奇奇怪怪的问题
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2016-10-25
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                最近新版上线为了实现功能需求，用了CoordinatorLayout和NestedScrollView来做顶部跟随手势的显示和隐藏。当然也被新控件坑了一点点，遇到了下边几个问题。先看下效果图：
+
+1.NestedScrollView拦截点击事件的问题NestedScrollView只能是Coor..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+    <a href="/2016/04/28/mac-app/">
+        <h2 class="post-title">
+            Mac上你值得拥有的App
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2016-04-28
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                Alfred必备，配合 workflow 6得飞起  
+iTerm
+敲命令能缺了它？
+oh my zsh跟iTerm绝配，提供了 iTerm 的几种主题，上图就是其中一种主题
+Go2Shell快速在当前目录进入shell环境
+Manico设置快捷键启动APP 很方便  
+CleanMyMac
+清..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+
+<!-- 翻页 pager -->
+
+<ul class="pager">
+    
+    
+    <li class="next">
+        <a href="/page/2/">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
+
+
+        </div>
+        
+        <!-- Sidebar Container -->
+        <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container">
+
+            <!-- About Me -->
+            <section class="visible-md visible-lg" style="padding: 0 18px">
+                <div class="short-about">
+                    <!--侧边栏头像-->
+                    
+                    <img src="http://upload.jianshu.io/users/upload_avatars/196894/99323ae8-5924-4730-b73f-9d0d284ff243.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240"/>
+                    
+                    <h5><a href="/about/">Vivian陈薇</a></h5>
+                    
+                    <p>《程序员》专题主编 Android程序媛</p>
+                    
+                    <hr>
+                    <!-- SNS Link 社交 -->
+                    <ul class="list-inline">
+                        
+                        
+                        <li>
+                            <a target="_blank" href="https://twitter.com/vivian8725118">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a target="_blank" href="https://www.zhihu.com/people/vivian8725118">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+
+                        
+                        <li>
+                            <a target="_blank" href="http://weibo.com/duanandwei">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a target="_blank" href="http://jianshu.com/u/4a4eb4feee62">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-jianshu fa-stack-1x fa-inverse">简</i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+                        
+
+                        
+                        <li>
+                            <a target="_blank" href="https://github.com/vivian8725118">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+
+                        
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Featured Tags  标签 -->
+            
+            <section>
+                <div class="tags">
+                    
+                    
+                    <a href="/tags/#学习" title="学习"
+                       rel="2">学习</a>
+                    
+                    
+                    
+                    <a href="/tags/#读书" title="读书"
+                       rel="2">读书</a>
+                    
+                    
+                    
+                    <a href="/tags/#Android" title="Android"
+                       rel="6">Android</a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="/tags/#plugin" title="plugin"
+                       rel="2">plugin</a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="/tags/#webview" title="webview"
+                       rel="2">webview</a>
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </section>
+            
+
+            
+            <hr>
+            <h5 style="text-align: center;">Friends</h5>
+            <ul class="list-inline" style="text-align: center;">
+                
+                <li><a href="http://www.jianshu.com/u/df40282480b4" target="_blank">小鄧子</a></li>
+                
+                <li><a href="http://www.kaedea.com" target="_blank">Kaede君</a></li>
+                
+                <li><a href="http://yifeng.studio/" target="_blank">亦枫</a></li>
+                
+                <li><a href="http://blog.coderclock.com" target="_blank">技术视界</a></li>
+                
+                <li><a href="https://tonnyl.github.io" target="_blank">Tonny</a></li>
+                
+                <li><a href="http://jerey.cn" target="_blank">Anderson</a></li>
+                
+                <li><a href="http://zqlite.com" target="_blank">zhangqinglian</a></li>
+                
+                <li><a href="http://oragekk.me" target="_blank">oragekk</a></li>
+                
+                <li><a href="http://yifeiyuan.me" target="_blank">程序亦非猿</a></li>
+                
+                <li><a href="http://www.jidanlee.com" target="_blank">Harlber</a></li>
+                
+                <li><a href="http://www.dajipai.cc" target="_blank">香脆的大鸡排</a></li>
+                
+                <li><a href="https://www.moretime.vip" target="_blank">红色物质</a></li>
+                
+            </ul>
+            
+        
+            <!-- 公众号 -->
+            <section class="visible-md visible-lg" style="padding: 0 18px">
+                <div class="qrcode">
+                   <div>
+                       <p>技术公众号:程序员Gank</p>
+                        分享技术干货
+                        <img src="/assets/images/programmer_gank.jpg"/>
+                   </div>
+
+                    <div>
+                        <p>个人公众号:小彤花园</p>
+                         程序媛的日常+读书分享
+                        <img src="/assets/images/xiaotong.jpg"/>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/duanandwei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+              
+                    <li>
+                        <a target="_blank" href="http://jianshu.com/u/4a4eb4feee62">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-1x fa-inverse">简</i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Vivian陈薇 2021
+                    <br>
+                    <!-- 不蒜子计数 -->
+                    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                    <!-- 不蒜子计数 -->  
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">总访问量: <span id="busuanzi_value_site_pv"></span> 次</span>
+                    <br>
+                    <span id="busuanzi_container_site_uv" style='display:none'>总访客数: <span id="busuanzi_value_site_uv"></span> 人 </span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 0;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+        
+});
+</script> 
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://vivianchen.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'd6237b3ef7ace3d92cfaf9169538b06d';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://upload.jianshu.io/users/upload_avatars/196894/99323ae8-5924-4730-b73f-9d0d284ff243.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+{% if theme.mob_share.enable %}
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+{% endif %}
+</body>
+
+</html>

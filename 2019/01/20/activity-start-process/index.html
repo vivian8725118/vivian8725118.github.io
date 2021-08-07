@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Vivian陈薇在 Github 上的个人博客">
+    <meta name="keyword" content="Android,Vivian陈薇,Vivian8725118,Hexo,Mac,Android程序媛,简书,vivianchen,小彤花园">
+    <meta name="baidu-site-verification" content="d4fNZIBjpX"/>
+    <meta name="google-site-verification" content="mItZ_Q8fv5pHjnbFFPvX4UFPMS6RYGijZT2toCB2yhk" />
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Vivian陈薇" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+
+    <title>
+        
+        Activity启动流程｜Vivian陈薇&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://vivianchen.cn/2019/01/20/activity-start-process/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+    
+<link rel="stylesheet" href="/css/mob_share.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Vivian陈薇
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/works/">My Works</a>
+                        </li>
+							
+						
+                    
+                        
+							
+								
+							
+						
+                    
+                        
+                    
+					
+					
+						<li>
+							<a href="/about">About</a>
+						</li>
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+    }
+
+    
+
+</style>
+
+
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Activity启动流程</h1>
+                    
+                    <span class="meta">
+                         作者 Vivian陈薇
+                        <span>
+                          日期 2019-01-20
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Android"
+                           title="Android">Android</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Activity启动流程
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Activity启动流程很多文章都已经说过了，这里说一下自己的理解。<br>Activity启动流程分两种:</p>
+<ul>
+<li>一种是启动正在运行的app的Activity，即启动子Activity。如无特殊声明默认和启动该activity的activity处于同一进程。如果有声明在一个新的进程中，则处于两个进程。</li>
+<li>一种是打开新的app，即为Launcher启动新的Activity。</li>
+</ul>
+<p>后边启动Activity的流程是一样的，区别是前边判断进程是否存在的那部分。</p>
+<p>Activity启动的前提是已经开机，各项进程和AMS等服务已经初始化完成，在这里也提一下那些内容。</p>
+<h1 id="Activity启动之前的一些事情"><a href="#Activity启动之前的一些事情" class="headerlink" title="Activity启动之前的一些事情"></a>Activity启动之前的一些事情</h1><ul>
+<li>init进程：init是所有linux程序的起点，是Zygote的父进程。解析init.rc孵化出Zygote进程。</li>
+<li>Zygote进程：Zygote是所有Java进程的父进程，所有的App进程都是由Zygote进程fork生成的。</li>
+<li>SystemServer进程：System Server是Zygote孵化的第一个进程。SystemServer负责启动和管理整个Java framework，包含AMS，PMS等服务。</li>
+<li>Launcher：Zygote进程孵化的第一个App进程是Launcher。</li>
+</ul>
+<h2 id="1-init进程是什么？"><a href="#1-init进程是什么？" class="headerlink" title="1.init进程是什么？"></a>1.init进程是什么？</h2><p>Android是基于linux系统的，手机开机之后，linux内核进行加载。加载完成之后会启动init进程。<br>init进程会启动ServiceManager，孵化一些守护进程，并解析init.rc孵化Zygote进程。</p>
+<h2 id="2-Zygote进程是什么？"><a href="#2-Zygote进程是什么？" class="headerlink" title="2.Zygote进程是什么？"></a>2.Zygote进程是什么？</h2><p>所有的App进程都是由Zygote进程fork生成的，包括SystemServer进程。Zygote初始化后，会注册一个等待接受消息的socket，OS层会采用socket进行IPC通信。</p>
+<h2 id="3-为什么是Zygote来孵化进程，而不是新建进程呢？"><a href="#3-为什么是Zygote来孵化进程，而不是新建进程呢？" class="headerlink" title="3.为什么是Zygote来孵化进程，而不是新建进程呢？"></a>3.为什么是Zygote来孵化进程，而不是新建进程呢？</h2><p>每个应用程序都是运行在各自的Dalvik虚拟机中，应用程序每次运行都要重新初始化和启动虚拟机，这个过程会耗费很长时间。Zygote会把已经运行的虚拟机的代码和内存信息共享，起到一个<strong>预加载资源和类</strong>的作用，从而缩短启动时间。</p>
+<h1 id="Activity启动阶段"><a href="#Activity启动阶段" class="headerlink" title="Activity启动阶段"></a>Activity启动阶段</h1><h2 id="涉及到的概念"><a href="#涉及到的概念" class="headerlink" title="涉及到的概念"></a>涉及到的概念</h2><ul>
+<li>进程：Android系统为每个APP分配至少一个进程</li>
+<li>IPC：跨进程通信，Android中采用Binder机制。</li>
+</ul>
+<h2 id="涉及到的类"><a href="#涉及到的类" class="headerlink" title="涉及到的类"></a>涉及到的类</h2><ul>
+<li>ActivityStack：Activity在AMS的栈管理，用来记录已经启动的Activity的先后关系，状态信息等。通过ActivityStack决定是否需要启动新的进程。</li>
+<li>ActivitySupervisor：管理 activity 任务栈</li>
+<li>ActivityThread：ActivityThread 运行在UI线程（主线程），App的真正入口。</li>
+<li>ApplicationThread：用来实现AMS和ActivityThread之间的交互。</li>
+<li>ApplicationThreadProxy：ApplicationThread 在服务端的代理。AMS就是通过该代理与ActivityThread进行通信的。</li>
+<li>IActivityManager：继承与IInterface接口，抽象出跨进程通信需要实现的功能</li>
+<li>AMN：运行在server端（SystemServer进程）。实现了Binder类，具体功能由子类AMS实现。</li>
+<li>AMS：AMN的子类，负责管理四大组件和进程，包括生命周期和状态切换。AMS因为要和ui交互，所以极其复杂，涉及window。</li>
+<li>AMP：AMS的client端代理（app进程）。了解Binder知识可以比较容易理解server端的stub和client端的proxy。AMP和AMS通过Binder通信。</li>
+<li>Instrumentation：仪表盘，负责调用Activity和Application生命周期。测试用到这个类比较多。</li>
+</ul>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p>这个图来源自网上，之前也看过很多类似讲流程的文章，但是大都是片段的。这个图是目前看到的最全的，自己去画一下也应该不会比这个全了，所以在这里直接引用一下，可以去浏览器上放大看。</p>
+<blockquote>
+<p>原图地址：<a target="_blank" rel="noopener" href="https://upload-images.jianshu.io/upload_images/196894-85c44f1bf563d8d2.png">https://upload-images.jianshu.io/upload_images/196894-85c44f1bf563d8d2.png</a> </p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/196894-85c44f1bf563d8d2.png"></p>
+<h2 id="涉及到的进程"><a href="#涉及到的进程" class="headerlink" title="涉及到的进程"></a>涉及到的进程</h2><ul>
+<li>Launcher所在的进程</li>
+<li>AMS所在的SystemServer进程</li>
+<li>要启动的Activity所在的app进程</li>
+</ul>
+<p>如果是启动根Activity，就涉及上述三个进程。<br>如果是启动子Activity，那么就只涉及AMS进程和app所在进程。</p>
+<h2 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h2><ul>
+<li>Launcher：Launcher通知AMS要启动activity。<ul>
+<li>startActivitySafely-&gt;startActivity-&gt;Instrumentation.execStartActivity()(AMP.startActivity)-&gt;AMS.startActivity</li>
+</ul>
+</li>
+<li>AMS:PMS的resoveIntent验证要启动activity是否匹配。<ul>
+<li>如果匹配，通过ApplicationThread发消息给Launcher所在的主线程，暂停当前Activity(Launcher);</li>
+</ul>
+</li>
+<li>暂停完，在该activity还不可见时，通知AMS，根据要启动的Activity配置ActivityStack。然后判断要启动的Activity进程是否存在?<ul>
+<li>存在：发送消息LAUNCH_ACTIVITY给需要启动的Activity主线程，执行handleLaunchActivity</li>
+<li>不存在：通过socket向zygote请求创建进程。进程启动后，ActivityThread.attach</li>
+</ul>
+</li>
+<li>判断Application是否存在，若不存在，通过LoadApk.makeApplication创建一个。在主线程中通过thread.attach方法来关联ApplicationThread。</li>
+<li>在通过ActivityStackSupervisor来获取当前需要显示的ActivityStack。</li>
+<li>继续通过ApplicationThread来发送消息给主线程的Handler来启动Activity（handleLaunchActivity）。</li>
+<li>handleLauchActivity：调用了performLauchActivity，里边Instrumentation生成了新的activity对象，继续调用activity生命周期。</li>
+</ul>
+<h2 id="IPC过程："><a href="#IPC过程：" class="headerlink" title="IPC过程："></a>IPC过程：</h2><p>双方都是通过对方的代理对象来进行通信。<br>1.app和AMS通信：app通过本进程的AMP和AMS进行Binder通信<br>2.AMS和新app通信：通过ApplicationThreadProxy来通信，并不直接和ActivityThread通信</p>
+<h2 id="参考函数流程"><a href="#参考函数流程" class="headerlink" title="参考函数流程"></a>参考函数流程</h2><p>Activity启动流程（从Launcher开始）：</p>
+<p>第一阶段： Launcher通知AMS要启动新的Activity（在Launcher所在的进程执行）</p>
+<ul>
+<li><strong>Launcher.startActivitySafely</strong> //首先Launcher发起启动Activity的请求</li>
+<li>Activity.startActivity</li>
+<li>Activity.startActivityForResult</li>
+<li><strong>Instrumentation.execStartActivity</strong> //交由Instrumentation代为发起请求</li>
+<li>ActivityManager.getService().startActivity //通过IActivityManagerSingleton.get()得到一个AMP代理对象</li>
+<li>ActivityManagerProxy.startActivity //通过AMP代理通知AMS启动activity   </li>
+</ul>
+<p>第二阶段：AMS先校验一下Activity的正确性，如果正确的话，会暂存一下Activity的信息。然后，AMS会通知Launcher程序pause Activity（在AMS所在进程执行）</p>
+<ul>
+<li><strong>ActivityManagerService.startActivity</strong></li>
+<li>ActivityManagerService.startActivityAsUser</li>
+<li>ActivityStackSupervisor.startActivityMayWait</li>
+<li>ActivityStackSupervisor.startActivityLocked ：检查有没有在AndroidManifest中注册</li>
+<li>ActivityStackSupervisor.startActivityUncheckedLocked</li>
+<li><strong>ActivityStack.startActivityLocked</strong> ：判断是否需要创建一个新的任务来启动Activity。</li>
+<li><strong>ActivityStack.resumeTopActivityLocked</strong> ：获取栈顶的activity，并通知Launcher应该pause掉这个Activity以便启动新的activity。</li>
+<li>ActivityStack.startPausingLocked</li>
+<li>ApplicationThreadProxy.schedulePauseActivity</li>
+</ul>
+<p>第三阶段： pause Launcher的Activity，并通知AMS已经paused（在Launcher所在进程执行）</p>
+<ul>
+<li>ApplicationThread.schedulePauseActivity</li>
+<li>ActivityThread.queueOrSendMessage</li>
+<li>H.handleMessage</li>
+<li>ActivityThread.handlePauseActivity</li>
+<li>ActivityManagerProxy.activityPaused</li>
+</ul>
+<p>第四阶段：检查activity所在进程是否存在，如果存在，就直接通知这个进程，在该进程中启动Activity；不存在的话，会调用Process.start创建一个新进程（执行在AMS进程）</p>
+<ul>
+<li>ActivityManagerService.activityPaused </li>
+<li>ActivityStack.activityPaused</li>
+<li>ActivityStack.completePauseLocked</li>
+<li>ActivityStack.resumeTopActivityLocked</li>
+<li>ActivityStack.startSpecificActivityLocked</li>
+<li><strong>ActivityManagerService.startProcessLocked</strong>  </li>
+<li><strong>Process.start</strong> //在这里创建了新进程，新的进程会导入ActivityThread类，并执行它的main函数</li>
+</ul>
+<p>第五阶段： 创建ActivityThread实例，执行一些初始化操作，并绑定Application。如果Application不存在，会调用LoadedApk.makeApplication创建一个新的Application对象。之后进入Loop循环。（执行在新创建的app进程）</p>
+<ul>
+<li><strong>ActivityThread.main</strong> </li>
+<li>ActivityThread.attach(false) //声明不是系统进程</li>
+<li>ActivityManagerProxy.attachApplication </li>
+</ul>
+<p>第六阶段：处理新的应用进程发出的创建进程完成的通信请求，并通知新应用程序进程启动目标Activity组件（执行在AMS进程）</p>
+<ul>
+<li><strong>ActivityManagerService.attachApplication</strong> //AMS绑定本地ApplicationThread对象，后续通过ApplicationThreadProxy来通信。</li>
+<li>ActivityManagerService.attachApplicationLocked</li>
+<li><strong>ActivityStack.realStartActivityLocked</strong> //真正要启动Activity了！</li>
+<li>ApplicationThreadProxy.scheduleLaunchActivity //AMS通过ATP通知app进程启动Activity</li>
+</ul>
+<p>第七阶段： 加载MainActivity类，调用onCreate声明周期方法（执行在新启动的app进程）</p>
+<ul>
+<li>ApplicationThread.scheduleLaunchActivity //ApplicationThread发消息给AT</li>
+<li>ActivityThread.queueOrSendMessage</li>
+<li>H.handleMessage //AT的Handler来处理接收到的LAUNCH_ACTIVITY的消息</li>
+<li><strong>ActivityThread.handleLaunchActivity</strong></li>
+<li>ActivityThread.performLaunchActivity</li>
+<li><strong>Instrumentation.newActivity</strong> //调用Instrumentation类来新建一个Activity对象</li>
+<li><strong>Instrumentation.callActivityOnCreate</strong></li>
+<li>MainActivity.onCreate</li>
+<li>ActivityThread.handleResumeActivity</li>
+<li>AMP.activityResumed</li>
+<li>AMS.activityResumed(AMS进程)</li>
+</ul>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a target="_blank" rel="noopener" href="http://gityuan.com/2016/03/12/start-activity/">http://gityuan.com/2016/03/12/start-activity/</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/luoshengyang/article/details/6689748">https://blog.csdn.net/luoshengyang/article/details/6689748</a></p>
+
+
+                <!--pay-->
+                <p class="btn_shang">
+                <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">¥打赏5毛</a>
+                </p>
+                
+                <div class="hide_box" style="display: none;"></div>
+                <div class="shang_box" style="display: none;">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">
+                    <img src="/assets/images/close.png" alt="取消" align="center"></a>
+                    <div class="shang_tit" align="center">
+                        <p>谢谢支持，我会继续努力的</p>
+                    </div>
+                    
+                    <div align="center">
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/wechat-pay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/alipay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    </div>
+                  
+                  
+                  
+                </div>
+
+                <script type="text/javascript">
+                    $(".pay_item").click(function() {
+                        $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                        var dataid = $(this).attr('data-id');
+                        $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "-code.jpeg");
+                        $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+                    });
+
+                    function dashangToggle() {
+                        $(".hide_box").fadeToggle();
+                        $(".shang_box").fadeToggle();
+                    };
+                </script>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/06/15/电影 | 猫の恩返し/" data-toggle="tooltip" data-placement="top"
+                           title="电影 | 猫の恩返し">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/01/03/2018-read-booklist/" data-toggle="tooltip" data-placement="top"
+                           title="2018看过的书">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+                <!--Mob Share-->
+                
+                     <!--MOB SHARE BEGIN-->
+<div class="post-spread">
+<div class="-hoofoo-share-title">分享文章</div>
+<div class="-hoofoo-share-buttons">
+    <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
+    <div class="-mob-share-weixin -hoofoo-share-weixin -hoofoo-share-ui-button"><i class="fa fa-weixin" aria-hidden="true"></i></div>
+    <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+        <li class="-mob-share-mingdao"><p>明道</p></li>
+        <li class="-mob-share-pengyou"><p>朋友网</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+        <li class="-mob-share-pocket"><p>Pocket</p></li>
+        <li class="-mob-share-google"><p>Google+</p></li>
+        <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+        <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+        <li class="-mob-share-linkedin"><p>Linkedin</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+</div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey={{theme.mob_share.appkey}}"></script>
+<!--MOB SHARE END-->
+                     {% if theme.mob_share.enable %}
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+{% endif %}
+                
+                
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDgxMi83MzY0">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity%E5%90%AF%E5%8A%A8%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B%E6%83%85"><span class="toc-text">Activity启动之前的一些事情</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-init%E8%BF%9B%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">1.init进程是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Zygote%E8%BF%9B%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">2.Zygote进程是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AFZygote%E6%9D%A5%E5%AD%B5%E5%8C%96%E8%BF%9B%E7%A8%8B%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E6%96%B0%E5%BB%BA%E8%BF%9B%E7%A8%8B%E5%91%A2%EF%BC%9F"><span class="toc-text">3.为什么是Zygote来孵化进程，而不是新建进程呢？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity%E5%90%AF%E5%8A%A8%E9%98%B6%E6%AE%B5"><span class="toc-text">Activity启动阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">涉及到的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E7%B1%BB"><span class="toc-text">涉及到的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="toc-text">涉及到的进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-text">具体流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPC%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-text">IPC过程：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E5%87%BD%E6%95%B0%E6%B5%81%E7%A8%8B"><span class="toc-text">参考函数流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Android"
+                           title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.jianshu.com/u/df40282480b4">小鄧子</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.kaedea.com">Kaede君</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://yifeng.studio/">亦枫</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://blog.coderclock.com">技术视界</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="https://tonnyl.github.io">Tonny</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://jerey.cn">Anderson</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://zqlite.com">zhangqinglian</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://oragekk.me">oragekk</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://yifeiyuan.me">程序亦非猿</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.jidanlee.com">Harlber</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.dajipai.cc">香脆的大鸡排</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="https://www.moretime.vip">红色物质</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/duanandwei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+              
+                    <li>
+                        <a target="_blank" href="http://jianshu.com/u/4a4eb4feee62">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-1x fa-inverse">简</i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Vivian陈薇 2021
+                    <br>
+                    <!-- 不蒜子计数 -->
+                    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                    <!-- 不蒜子计数 -->  
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">总访问量: <span id="busuanzi_value_site_pv"></span> 次</span>
+                    <br>
+                    <span id="busuanzi_container_site_uv" style='display:none'>总访客数: <span id="busuanzi_value_site_uv"></span> 人 </span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 0;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+        
+});
+</script> 
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://vivianchen.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'd6237b3ef7ace3d92cfaf9169538b06d';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://upload.jianshu.io/users/upload_avatars/196894/99323ae8-5924-4730-b73f-9d0d284ff243.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+{% if theme.mob_share.enable %}
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+{% endif %}
+</body>
+
+</html>

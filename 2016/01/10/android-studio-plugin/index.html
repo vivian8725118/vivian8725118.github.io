@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Vivian陈薇在 Github 上的个人博客">
+    <meta name="keyword" content="Android,Vivian陈薇,Vivian8725118,Hexo,Mac,Android程序媛,简书,vivianchen,小彤花园">
+    <meta name="baidu-site-verification" content="d4fNZIBjpX"/>
+    <meta name="google-site-verification" content="mItZ_Q8fv5pHjnbFFPvX4UFPMS6RYGijZT2toCB2yhk" />
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Vivian陈薇" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+
+    <title>
+        
+        Android Studio插件｜Vivian陈薇&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://vivianchen.cn/2016/01/10/android-studio-plugin/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+    
+<link rel="stylesheet" href="/css/mob_share.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Vivian陈薇
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/works/">My Works</a>
+                        </li>
+							
+						
+                    
+                        
+							
+								
+							
+						
+                    
+                        
+                    
+					
+					
+						<li>
+							<a href="/about">About</a>
+						</li>
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+    }
+
+    
+
+</style>
+
+
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Android Studio插件</h1>
+                    
+                    <span class="meta">
+                         作者 Vivian陈薇
+                        <span>
+                          日期 2016-01-10
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Android"
+                           title="Android">Android</a>
+                        
+                        <a class="tag" href="/tags/#plugin"
+                           title="plugin">plugin</a>
+                        
+                        <a class="tag" href="/tags/#Android Studio"
+                           title="Android Studio">Android Studio</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Android Studio插件
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="1-FindViewByMe："><a href="#1-FindViewByMe：" class="headerlink" title="1.FindViewByMe："></a>1.FindViewByMe：</h2><p>该插件可以根据layout文件生成findviewid代码。<br>(ps:之前的 Android Property Initializer 没有了)<br><img src="http://upload-images.jianshu.io/upload_images/196894-b6afc2850bf6d291.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="2-Robotium-Recorder"><a href="#2-Robotium-Recorder" class="headerlink" title="2.Robotium Recorder"></a>2.Robotium Recorder</h2><p>Robotium Recorder是一个自动化测试框架，用于测试在模拟器和Android设备上原生的和混合的移动应用程序。Robotium Recorder可以让你记录测试案例和用户操作。你也可以查看不同Android活动时的系统功能和用户测试场景。　　Robotium Recorder能让你看到当你的应用程序运行在设备上时，它是否能按预期工作，或者是否能对用户动作做出正确的回应。如果你想要开发稳定的Android应用程序，那么此插件对于进行彻底的测试很有帮助。　</p>
+<h2 id="3-jimu-Mirror"><a href="#3-jimu-Mirror" class="headerlink" title="3.jimu Mirror"></a>3.jimu Mirror</h2><p>Android Studio配备了一个可视化的布局编辑器。但是一个静态的布局预览有时候对于开发人员而言可能还不够，因为静态预览不能预览动画、颜色和触摸区域，所以jimu Mirror来了，这是一个可以让你在真实的设备上迅速测试布局的插件。jimu Mirror允许在设备上预览随同编码更新的Android布局。</p>
+<h2 id="4-Drawable-Importer"><a href="#4-Drawable-Importer" class="headerlink" title="4.Drawable Importer"></a>4.Drawable Importer</h2><p>为了适应所有Android屏幕的大小和密度，每个Android项目都会包含drawable文件夹。任何具备Android开发经验的开发人员都知道，为了支持所有的屏幕尺寸，你必须给每个屏幕类型导入不同的画板。Android Drawable Importer插件能让这项工作变得更容易。它可以减少导入缩放图像到Android项目所需的工作量。Android Drawable Importer添加了一个在不同分辨率导入画板或缩放指定图像到定义分辨率的选项。这个插件加速了开发人员的画板工作。</p>
+<h2 id="5-FindBugs"><a href="#5-FindBugs" class="headerlink" title="5.FindBugs"></a>5.FindBugs</h2><p>右键会出现一个Find Bugs菜单.至此，findbugs插件安装完毕,你可以放心的使用了。。 FindBugs的设置：<br>安装好之后，可以通过 Projects &gt; Property &gt; FindBugs标签对其进行设置。设置方法可以根据自己的需要进行调整。<br> 另外在 问题（Proplems）列表窗口（Windows &gt; 视图 &gt; 问题）的Filter设置里，把FindBugs的有关选项都check上。<br> FindBugs地执行： 选中 所在项目，鼠标右键 &gt; Find Bugs &gt; Find Bugs执行,哈哈，一切搞定了吧，然后就是我们的使用了。 </p>
+<h2 id="6-GsonFormat"><a href="#6-GsonFormat" class="headerlink" title="6.GsonFormat"></a>6.GsonFormat</h2><p>根据json字符串生成bean代码。androidcodegenerator， 该插件可以生成 adapter 里getview方法需要的viewholder类。<img src="http://upload-images.jianshu.io/upload_images/196894-f84f89d008302608.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="7-android-selector-chapek"><a href="#7-android-selector-chapek" class="headerlink" title="7.android-selector-chapek"></a>7.android-selector-chapek</h2><p>根据资源自动生成相应的selector，免得对selector文件复制粘贴了</p>
+<h2 id="8-android-material-design-icon-generator-pluginmaterial-design-icon"><a href="#8-android-material-design-icon-generator-pluginmaterial-design-icon" class="headerlink" title="8.android-material-design-icon-generator-pluginmaterial-design-icon"></a>8.android-material-design-icon-generator-pluginmaterial-design-icon</h2><p>资源生成器 icon资源都是官方提供：google/material-design-icons · GitHub</p>
+<h2 id="9-genymotion-gradle-plugin"><a href="#9-genymotion-gradle-plugin" class="headerlink" title="9.genymotion-gradle-plugin"></a>9.genymotion-gradle-plugin</h2><p>不同于图形化的genymotion插件，这个允许你通过脚本来配置，创建device</p>
+<h2 id="10-gradle-packer-plugin"><a href="#10-gradle-packer-plugin" class="headerlink" title="10.gradle-packer-plugin"></a>10.gradle-packer-plugin</h2><p>让多渠道打包变的更简单</p>
+<h2 id="11-lint-cleaner-plugin"><a href="#11-lint-cleaner-plugin" class="headerlink" title="11.lint-cleaner-plugin"></a>11.lint-cleaner-plugin</h2><p>移除Android中无用资源</p>
+<h2 id="12-dexcount-gradle-plugin"><a href="#12-dexcount-gradle-plugin" class="headerlink" title="12.dexcount-gradle-plugin"></a>12.dexcount-gradle-plugin</h2><p>方法数计算，对于较大应用避免方法爆棚很有用</p>
+<h2 id="13-robolectric-gradle-pluginRobolectric"><a href="#13-robolectric-gradle-pluginRobolectric" class="headerlink" title="13.robolectric-gradle-pluginRobolectric"></a>13.robolectric-gradle-pluginRobolectric</h2><p>测试辅助工具</p>
+<h2 id="14-GradleDependenciesHelperPluginmaven"><a href="#14-GradleDependenciesHelperPluginmaven" class="headerlink" title="14.GradleDependenciesHelperPluginmaven"></a>14.GradleDependenciesHelperPluginmaven</h2><p>gradle 依赖支持自动补全</p>
+<h2 id="15-Json2Java"><a href="#15-Json2Java" class="headerlink" title="15.Json2Java"></a>15.Json2Java</h2><p>根据JSon数据自动生成对应的Java实体类，还支持Parcel、Gson Annotations对应代码自动生成。期待后续的提取父类以及多url构建整个工程的功能项目地址：<br><a target="_blank" rel="noopener" href="https://github.com/jonfhancock/JsonToJava">https://github.com/jonfhancock/JsonToJava</a><br>在线演示：<a target="_blank" rel="noopener" href="http://jsontojava.appspot.com/">http://jsontojava.appspot.com/</a></p>
+<h2 id="16-Android-Holo-Colors-IntelliJ-Plugin"><a href="#16-Android-Holo-Colors-IntelliJ-Plugin" class="headerlink" title="16.Android Holo Colors IntelliJ Plugin"></a>16.Android Holo Colors IntelliJ Plugin</h2><p>Android studio插件，生成holo样式9 patch图片项目地址：<br><a target="_blank" rel="noopener" href="https://github.com/jeromevdl/android-holo-colors-idea-plugin%E6%95%88%E6%9E%9C%E5%9B%BE%EF%BC%9A">https://github.com/jeromevdl/android-holo-colors-idea-plugin效果图：</a></p>
+<h2 id="17-SelectorChapek-for-Android"><a href="#17-SelectorChapek-for-Android" class="headerlink" title="17.SelectorChapek for Android"></a>17.SelectorChapek for Android</h2><p>Android Studio插件，可根据固定文件名格式资源自动生成drawable selectors xml文件。项目地址：<a target="_blank" rel="noopener" href="https://github.com/inmite/android-selector-chapek">https://github.com/inmite/android-selector-chapek</a></p>
+<h2 id="18-Android-Asset-Studio"><a href="#18-Android-Asset-Studio" class="headerlink" title="18.Android Asset Studio"></a>18.Android Asset Studio</h2><p>各种Android资源自动生成器，包括启动图标、ActionBar图标、通知栏图标、点9等项目地址：<a target="_blank" rel="noopener" href="https://github.com/romannurik/AndroidAssetStudio%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA%EF%BC%9Ahttp://romannurik.github.io/AndroidAssetStudio/">https://github.com/romannurik/AndroidAssetStudio在线演示：http://romannurik.github.io/AndroidAssetStudio/</a></p>
+<h2 id="19-Android-Screenshot-library"><a href="#19-Android-Screenshot-library" class="headerlink" title="19.Android Screenshot library"></a>19.Android Screenshot library</h2><p>Android截图工具类，用于在持续集成时截图项目地址：<br><a target="_blank" rel="noopener" href="https://github.com/rtyley/android-screenshot-lib">https://github.com/rtyley/android-screenshot-lib</a></p>
+<h2 id="20-sonar-android-lint-plugin"><a href="#20-sonar-android-lint-plugin" class="headerlink" title="20.sonar-android-lint-plugin"></a>20.sonar-android-lint-plugin</h2><p>将android lint的错误在sonar中展现项目地址：<br><a target="_blank" rel="noopener" href="https://github.com/SonarCommunity/sonar-android">https://github.com/SonarCommunity/sonar-android</a></p>
+<h2 id="21-umeng-muti-channel-build-tool"><a href="#21-umeng-muti-channel-build-tool" class="headerlink" title="21.umeng-muti-channel-build-tool"></a>21.umeng-muti-channel-build-tool</h2><p>渠道打包工具项目地址：<br><a target="_blank" rel="noopener" href="https://github.com/umeng/umeng-muti-channel-build-tool">https://github.com/umeng/umeng-muti-channel-build-tool</a><br>另可参见Google的构建系统Gradle：<br><a target="_blank" rel="noopener" href="http://tools.android.com/tech-docs/new-build-system/user-guide">http://tools.android.com/tech-docs/new-build-system/user-guide</a></p>
+<h2 id="22-ViewServer"><a href="#22-ViewServer" class="headerlink" title="22.ViewServer"></a>22.ViewServer</h2><p>允许app运行在任何手机上都可以用HierarchyViewer查看项目地址：<br><a target="_blank" rel="noopener" href="https://github.com/romainguy/ViewServer">https://github.com/romainguy/ViewServer</a></p>
+
+
+                <!--pay-->
+                <p class="btn_shang">
+                <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">¥打赏5毛</a>
+                </p>
+                
+                <div class="hide_box" style="display: none;"></div>
+                <div class="shang_box" style="display: none;">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">
+                    <img src="/assets/images/close.png" alt="取消" align="center"></a>
+                    <div class="shang_tit" align="center">
+                        <p>谢谢支持，我会继续努力的</p>
+                    </div>
+                    
+                    <div align="center">
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/wechat-pay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="shang_payimg">
+                        <img  src="/assets/images/alipay-code.jpeg" alt="扫码支持" title="扫一扫">
+                    </div>
+                    </div>
+                  
+                  
+                  
+                </div>
+
+                <script type="text/javascript">
+                    $(".pay_item").click(function() {
+                        $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                        var dataid = $(this).attr('data-id');
+                        $(".shang_payimg img").attr("src", "/assets/images/" + dataid + "-code.jpeg");
+                        $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+                    });
+
+                    function dashangToggle() {
+                        $(".hide_box").fadeToggle();
+                        $(".shang_box").fadeToggle();
+                    };
+                </script>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/01/13/webview/" data-toggle="tooltip" data-placement="top"
+                           title="Webview小结">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/01/10/good-blog-tools-recommend/" data-toggle="tooltip" data-placement="top"
+                           title="不错的博客和工具网站">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+                <!--Mob Share-->
+                
+                     <!--MOB SHARE BEGIN-->
+<div class="post-spread">
+<div class="-hoofoo-share-title">分享文章</div>
+<div class="-hoofoo-share-buttons">
+    <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
+    <div class="-mob-share-weixin -hoofoo-share-weixin -hoofoo-share-ui-button"><i class="fa fa-weixin" aria-hidden="true"></i></div>
+    <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+        <li class="-mob-share-mingdao"><p>明道</p></li>
+        <li class="-mob-share-pengyou"><p>朋友网</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+        <li class="-mob-share-pocket"><p>Pocket</p></li>
+        <li class="-mob-share-google"><p>Google+</p></li>
+        <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+        <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+        <li class="-mob-share-linkedin"><p>Linkedin</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+</div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey={{theme.mob_share.appkey}}"></script>
+<!--MOB SHARE END-->
+                     {% if theme.mob_share.enable %}
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+{% endif %}
+                
+                
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDgxMi83MzY0">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-FindViewByMe%EF%BC%9A"><span class="toc-text">1.FindViewByMe：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Robotium-Recorder"><span class="toc-text">2.Robotium Recorder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-jimu-Mirror"><span class="toc-text">3.jimu Mirror</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Drawable-Importer"><span class="toc-text">4.Drawable Importer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-FindBugs"><span class="toc-text">5.FindBugs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-GsonFormat"><span class="toc-text">6.GsonFormat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-android-selector-chapek"><span class="toc-text">7.android-selector-chapek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-android-material-design-icon-generator-pluginmaterial-design-icon"><span class="toc-text">8.android-material-design-icon-generator-pluginmaterial-design-icon</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-genymotion-gradle-plugin"><span class="toc-text">9.genymotion-gradle-plugin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-gradle-packer-plugin"><span class="toc-text">10.gradle-packer-plugin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-lint-cleaner-plugin"><span class="toc-text">11.lint-cleaner-plugin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-dexcount-gradle-plugin"><span class="toc-text">12.dexcount-gradle-plugin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-robolectric-gradle-pluginRobolectric"><span class="toc-text">13.robolectric-gradle-pluginRobolectric</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-GradleDependenciesHelperPluginmaven"><span class="toc-text">14.GradleDependenciesHelperPluginmaven</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-Json2Java"><span class="toc-text">15.Json2Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-Android-Holo-Colors-IntelliJ-Plugin"><span class="toc-text">16.Android Holo Colors IntelliJ Plugin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-SelectorChapek-for-Android"><span class="toc-text">17.SelectorChapek for Android</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-Android-Asset-Studio"><span class="toc-text">18.Android Asset Studio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-Android-Screenshot-library"><span class="toc-text">19.Android Screenshot library</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-sonar-android-lint-plugin"><span class="toc-text">20.sonar-android-lint-plugin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21-umeng-muti-channel-build-tool"><span class="toc-text">21.umeng-muti-channel-build-tool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-ViewServer"><span class="toc-text">22.ViewServer</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Android"
+                           title="Android">Android</a>
+                        
+                        <a class="tag" href="/tags/#plugin"
+                           title="plugin">plugin</a>
+                        
+                        <a class="tag" href="/tags/#Android Studio"
+                           title="Android Studio">Android Studio</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.jianshu.com/u/df40282480b4">小鄧子</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.kaedea.com">Kaede君</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://yifeng.studio/">亦枫</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://blog.coderclock.com">技术视界</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="https://tonnyl.github.io">Tonny</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://jerey.cn">Anderson</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://zqlite.com">zhangqinglian</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://oragekk.me">oragekk</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://yifeiyuan.me">程序亦非猿</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.jidanlee.com">Harlber</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="http://www.dajipai.cc">香脆的大鸡排</a></li>
+                        
+                        <li><a target="_blank" rel="noopener" href="https://www.moretime.vip">红色物质</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/duanandwei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+              
+                    <li>
+                        <a target="_blank" href="http://jianshu.com/u/4a4eb4feee62">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-1x fa-inverse">简</i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/vivian8725118">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Vivian陈薇 2021
+                    <br>
+                    <!-- 不蒜子计数 -->
+                    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                    <!-- 不蒜子计数 -->  
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">总访问量: <span id="busuanzi_value_site_pv"></span> 次</span>
+                    <br>
+                    <span id="busuanzi_container_site_uv" style='display:none'>总访客数: <span id="busuanzi_value_site_uv"></span> 人 </span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 0;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+        
+});
+</script> 
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://vivianchen.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'd6237b3ef7ace3d92cfaf9169538b06d';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://upload.jianshu.io/users/upload_avatars/196894/99323ae8-5924-4730-b73f-9d0d284ff243.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+{% if theme.mob_share.enable %}
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+{% endif %}
+</body>
+
+</html>
