@@ -49,7 +49,7 @@
 <style>
 
     header.intro-header {
-        background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')
+        background-image: url('/assets/images/top.jpeg')
     }
 </style>
 <!-- hack iOS CSS :active style -->
@@ -90,12 +90,6 @@
 					
                     
                         
-							
-                        <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-							
-						
                     
                         
 							
@@ -107,11 +101,17 @@
                     
                         
 							
-								
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
 							
 						
                     
                         
+							
+								
+							
+						
                     
 					
 					
@@ -304,7 +304,7 @@
 
 
 <div class="post-preview "
-     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+     style="background-image: url('/assets/images/top.jpeg')">
     <a href="/2016/04/22/chrome-plugin/">
         <h2 class="post-title">
             好用的Chrome插件
@@ -331,7 +331,7 @@ Unspla..
 
 
 <div class="post-preview "
-     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+     style="background-image: url('/assets/images/top.jpeg')">
     <a href="/2016/03/09/vector-asset-studio/">
         <h2 class="post-title">
             Vector Asset Studio的使用
@@ -355,7 +355,7 @@ Unspla..
 
 
 <div class="post-preview "
-     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+     style="background-image: url('/assets/images/top.jpeg')">
     <a href="/2016/01/13/webview/">
         <h2 class="post-title">
             Webview小结
@@ -380,7 +380,7 @@ Unspla..
 
 
 <div class="post-preview "
-     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+     style="background-image: url('/assets/images/top.jpeg')">
     <a href="/2016/01/10/android-studio-plugin/">
         <h2 class="post-title">
             Android Studio插件
@@ -404,7 +404,7 @@ Unspla..
 
 
 <div class="post-preview "
-     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+     style="background-image: url('/assets/images/top.jpeg')">
     <a href="/2016/01/10/good-blog-tools-recommend/">
         <h2 class="post-title">
             不错的博客和工具网站
@@ -429,7 +429,7 @@ Android 博客推荐鸿洋：htt..
 
 
 <div class="post-preview "
-     style="background-image: url('http://oco8bvfr8.qnssl.com/blog-bg-black-run.jpg')">
+     style="background-image: url('/assets/images/top.jpeg')">
     <a href="/2016/01/04/changeskin/">
         <h2 class="post-title">
             Android 夜间模式changeskin小结
@@ -560,17 +560,17 @@ Android 博客推荐鸿洋：htt..
                     
                     
                     
-                    <a href="/tags/#Android" title="Android"
-                       rel="6">Android</a>
-                    
-                    
-                    
-                    
-                    
                     
                     
                     <a href="/tags/#plugin" title="plugin"
                        rel="2">plugin</a>
+                    
+                    
+                    
+                    <a href="/tags/#Android" title="Android"
+                       rel="6">Android</a>
+                    
+                    
                     
                     
                     
@@ -590,8 +590,6 @@ Android 博客推荐鸿洋：htt..
                     
                     <a href="/tags/#webview" title="webview"
                        rel="2">webview</a>
-                    
-                    
                     
                     
                     
@@ -721,7 +719,7 @@ Android 博客推荐鸿洋：htt..
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Vivian陈薇 2021
+                    Copyright &copy; Vivian陈薇 2026
                     <br>
                     <!-- 不蒜子计数 -->
                     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -845,14 +843,15 @@ $(document).ready(function() {
 
 <!--wechat title img-->
 <img class="wechat-title-img" src="http://upload.jianshu.io/users/upload_avatars/196894/99323ae8-5924-4730-b73f-9d0d284ff243.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
-{% if theme.mob_share.enable %}
+
 <script type="text/javascript">
     //微信二维码点击背景关闭
     $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
          $(".-mob-share-weixin-qrcode-close").trigger("click");
-    }); 
+    });
 </script>
-{% endif %}
+
+
 </body>
 
 </html>
